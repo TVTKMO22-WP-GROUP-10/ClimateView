@@ -1,6 +1,6 @@
 # ClimateView
 
-HpKarjalainen = Hannu Karjalainen \n
-QuantumBlip = Kevin Kipinä
-jmakkie = Jarkko Makkonen
+HpKarjalainen = Hannu Karjalainen <br/>
+QuantumBlip = Kevin Kipinä<br/>
+jmakkie = Jarkko Makkonen<br/>
 themaiks = Miikka Sandelin
