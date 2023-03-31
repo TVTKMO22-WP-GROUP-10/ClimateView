@@ -1,7 +1,13 @@
+import './App.css';
 import { useState } from "react";
 import axios from "axios";
 import { Buffer } from "buffer";
 
+import Home from './routes/Home';
+import CreateUser from './routes/CreateUserView';
+import SecondView from './routes/SecondView';
+import Login from './routes/LoginView';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
 
@@ -62,8 +68,22 @@ function App() {
   }
 
   return (
+    <BrowserRouter>
     <div>
+      <div className="navbar">
+        <Link to="/"><div>Home</div></Link>
+        <Link to="/createuser"><div>Create User</div></Link>
+        <Link to="/secondview"><div>Second view</div></Link>
+        <Link to="/login"><div>Login</div></Link>
+      </div>
+      <Routes>
+        <Route path="/" element= { <Home /> } />
+        <Route path="/createuser" element= { <CreateUser /> } />
+        <Route path="/secondview" element= { <SecondView /> } />
+        <Route path="/login" element= { <Login /> } />
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
