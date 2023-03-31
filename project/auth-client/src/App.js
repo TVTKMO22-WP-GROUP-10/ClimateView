@@ -4,9 +4,9 @@ import axios from "axios";
 import { Buffer } from "buffer";
 
 import Home from './routes/Home';
-import CreateUser from './routes/CreateUserView';
+import CreateUser from './routes/CreateUser';
 import SecondView from './routes/SecondView';
-import Login from './routes/LoginView';
+import Login from './routes/Login';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
