@@ -1,26 +1,81 @@
-import React from 'react'
 import { Chart } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import demo_sample_data from "../demo_sample_data.json";
+import axios from "axios";
+import React, { useState } from 'react'
+
+function yearDataGroubBy(data, area) {
+  let parced_data = data.filter((value) => {
+    return value["area"] === area
+  }).map((a) => {
+    return {
+      Year: a["year"].toString(),
+      Temperature: a["deg"].toString()
+    }
+  })
+  return [...parced_data]
+}
+
 
 export default function SecondView() {
-  const data = {
-    datasets: [
-      {
-        label: "Co2 ppm",
-        data: [...demo_sample_data].reverse(),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        yAxisID: "co2",
-        parsing: {
-          xAxisKey: "TimeYrBP",
-          yAxisKey: "Co2ppm",
-        },
-        pointRadius: 1,
-      },
-    ],
-  };
 
+  const loading = "loading"
+  const error = "error"
+  const done = "done"
+
+  const [statusState, setStatusState] = useState(loading);
+  
+  if(statusState === loading) {
+  axios.get("http://localhost:8080/v1year")
+  .then(
+    (resp) => {
+      const parsing = {
+        xAxisKey: "Year",
+        yAxisKey: "Temperature",
+      }
+      const northern_annual = "northern_annual"
+      const southern_annual = "southern_annual"
+      const global_annual = "global_annual"
+      
+      setStatusState({
+        datasets: [
+          {
+            label: northern_annual,
+            data: yearDataGroubBy(resp.data, northern_annual),
+            borderColor: "rgb(255, 99, 132)",
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            parsing: parsing,
+            pointRadius: 1,
+          },
+          {
+            label: southern_annual,
+            data: yearDataGroubBy(resp.data, southern_annual),
+            borderColor: "rgb(201, 40, 12)",
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            parsing: parsing,
+            pointRadius: 1,
+          },
+          {
+            label: global_annual,
+            data: yearDataGroubBy(resp.data, global_annual),
+            borderColor: "rgb(145, 49, 112)",
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            parsing: parsing,
+            pointRadius: 1,
+          },
+        ]
+      });
+    },
+    (rej) => {
+      console.log(rej)
+      setStatusState(test)
+    }
+    ).catch((err) => {
+      console.log(err)
+      setStatusState(error)}
+      )
+    }
+  
   const options = {
     responsive: true,
     plugins: {
@@ -29,22 +84,60 @@ export default function SecondView() {
       },
       title: {
         display: true,
-        text: "Demo Co2 plot",
-      },
-    },
-    scales: {
-      co2: {
-        type: "linear",
-        display: true,
-        position: "right",
+        text: "ANNUAL DATA",
       },
     },
   };
 
+  let view = null
+  
+  switch(statusState) {
+    case loading:
+      view = <h1>Loading</h1>
+      break;
+    case error:
+      view = <h1>Error</h1>
+      break;
+    default:
+      view = <Line options={options} data={statusState} />
+  }
+
   return (
     <div style={{ width: "1000px" }}>
-      <h1>LinearLineGraphDemo</h1>
-      <Line options={options} data={data} />
+      {view}
     </div>
   );
 }
+
+/*
+datasets: [
+  {
+    label: northern_annual,
+    data: yearDataGroubBy(resp.data, northern_annual),
+    borderColor: "rgb(255, 99, 132)",
+    backgroundColor: "rgba(255, 99, 132, 0.5)",
+    yAxisID: "1",
+    parsing: parsing,
+    pointRadius: 1,
+  },
+  {
+    label: southern_annual,
+    data: yearDataGroubBy(resp.data, southern_annual),
+    borderColor: "rgb(255, 99, 132)",
+    backgroundColor: "rgba(255, 99, 132, 0.5)",
+    yAxisID: "2",
+    parsing: parsing,
+    pointRadius: 1,
+  },
+  {
+    label: global_annual,
+    data: yearDataGroubBy(resp.data, global_annual),
+    borderColor: "rgb(255, 99, 132)",
+    backgroundColor: "rgba(255, 99, 132, 0.5)",
+    yAxisID: "3",
+    parsing: parsing,
+    pointRadius: 1,
+  },
+],
+});
+*/

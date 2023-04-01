@@ -3,6 +3,7 @@ package com.security.auth.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,7 @@ import com.security.auth.data.V1Monthly;
 import com.security.auth.data.V1Yearly;
 import com.security.auth.service.V1AllService;
 
+@CrossOrigin  //Allowing CORS
 @RestController
 public class V1AllRest {
 
