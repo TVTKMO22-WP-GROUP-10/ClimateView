@@ -19,8 +19,11 @@ export default function CreateUserView() {
         try {
             const result = await axios.post(Constants.API_ADDRESS + '/register', formData)
             setSignupProcessState("signupSuccess");
-            console.log(result);
+            setTimeout(() => {
             navigate('/login', {replace:true});
+            }, 1500)
+
+           
 
         } catch (error) {
             console.error(error);
