@@ -5,6 +5,7 @@ import { Buffer } from "buffer";
 
 import Home from './routes/Home';
 import CreateUser from './routes/CreateUser';
+import FirstView from './routes/FirstView';
 import SecondView from './routes/SecondView';
 import Login from './routes/Login';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
@@ -73,12 +74,14 @@ function App() {
       <div className="navbar">
         <Link to="/"><div>Home</div></Link>
         <Link to="/createuser"><div>Create User</div></Link>
+        <Link to="/firstview"><div>First view</div></Link>
         <Link to="/secondview"><div>Second view</div></Link>
         <Link to="/login"><div>Login</div></Link>
       </div>
       <Routes>
         <Route path="/" element= { <Home /> } />
         <Route path="/createuser" element= { <CreateUser /> } />
+        <Route path="/firstview" element= { <FirstView /> } />
         <Route path="/secondview" element= { <SecondView /> } />
         <Route path="/login" element= { <Login /> } />
       </Routes>

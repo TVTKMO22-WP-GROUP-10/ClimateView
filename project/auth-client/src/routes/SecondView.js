@@ -16,7 +16,6 @@ function yearDataGroubBy(data, area) {
   return [...parced_data]
 }
 
-
 export default function SecondView() {
 
   const loading = "loading"
@@ -40,7 +39,7 @@ export default function SecondView() {
       setStatusState({
         datasets: [
           {
-            label: northern_annual,
+            label: "Northern annual anomalies",
             data: yearDataGroubBy(resp.data, northern_annual),
             borderColor: "rgb(255, 99, 132)",
             backgroundColor: "rgba(255, 99, 132, 0.5)",
@@ -84,7 +83,7 @@ export default function SecondView() {
       },
       title: {
         display: true,
-        text: "ANNUAL DATA",
+        text: "Visualization 1",
       },
     },
   };
