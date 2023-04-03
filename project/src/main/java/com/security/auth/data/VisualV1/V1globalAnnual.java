@@ -1,4 +1,4 @@
-package com.security.auth.data;
+package com.security.auth.data.VisualV1;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

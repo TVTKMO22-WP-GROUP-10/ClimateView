@@ -1,14 +1,14 @@
-package com.security.auth.service;
+package com.security.auth.service.VisualV1Services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.security.auth.data.V1Monthly;
-import com.security.auth.data.V1Yearly;
-import com.security.auth.repo.V1MonthlyRepository;
-import com.security.auth.repo.V1YearRepository;
+import com.security.auth.data.VisualV1.V1Monthly;
+import com.security.auth.data.VisualV1.V1Yearly;
+import com.security.auth.repo.VisualV1Repos.V1MonthlyRepository;
+import com.security.auth.repo.VisualV1Repos.V1YearRepository;
 
 @Service
 public class V1AllService {

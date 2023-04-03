@@ -1,4 +1,4 @@
-package com.security.auth.rest;
+package com.security.auth.rest.VisualV1Rest;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.security.auth.data.V1Monthly;
-import com.security.auth.data.V1Yearly;
-import com.security.auth.service.V1AllService;
+import com.security.auth.data.VisualV1.V1Monthly;
+import com.security.auth.data.VisualV1.V1Yearly;
+import com.security.auth.service.VisualV1Services.V1AllService;
 
 @CrossOrigin  //Allowing CORS
 @RestController
