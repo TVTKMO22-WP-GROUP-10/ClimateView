@@ -1,8 +1,9 @@
 import { Chart } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import demo_sample_data from "../demo_sample_data.json";
 import axios from "axios";
 import React, { useState } from 'react'
+
+//Visualization 1 start
 
 function yearDataGroubBy(data, area) {
   let parced_data = data.filter((value) => {
@@ -16,7 +17,7 @@ function yearDataGroubBy(data, area) {
   return [...parced_data]
 }
 
-export default function SecondView() {
+export default function FirstPage() {
 
   const loading = "loading"
   const error = "error"
@@ -24,6 +25,7 @@ export default function SecondView() {
 
   const [statusState, setStatusState] = useState(loading);
   
+  //GET-request
   if(statusState === loading) {
   axios.get("http://localhost:8080/v1year")
   .then(
@@ -101,6 +103,7 @@ export default function SecondView() {
       view = <Line options={options} data={statusState} />
   }
 
+  //return the line-chart
   return (
     <div style={{ width: "1000px" }}>
       {view}
@@ -108,35 +111,4 @@ export default function SecondView() {
   );
 }
 
-/*
-datasets: [
-  {
-    label: northern_annual,
-    data: yearDataGroubBy(resp.data, northern_annual),
-    borderColor: "rgb(255, 99, 132)",
-    backgroundColor: "rgba(255, 99, 132, 0.5)",
-    yAxisID: "1",
-    parsing: parsing,
-    pointRadius: 1,
-  },
-  {
-    label: southern_annual,
-    data: yearDataGroubBy(resp.data, southern_annual),
-    borderColor: "rgb(255, 99, 132)",
-    backgroundColor: "rgba(255, 99, 132, 0.5)",
-    yAxisID: "2",
-    parsing: parsing,
-    pointRadius: 1,
-  },
-  {
-    label: global_annual,
-    data: yearDataGroubBy(resp.data, global_annual),
-    borderColor: "rgb(255, 99, 132)",
-    backgroundColor: "rgba(255, 99, 132, 0.5)",
-    yAxisID: "3",
-    parsing: parsing,
-    pointRadius: 1,
-  },
-],
-});
-*/
+//End of V1, continue below

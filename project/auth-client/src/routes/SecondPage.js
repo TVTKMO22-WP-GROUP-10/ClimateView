@@ -2,6 +2,8 @@ import React from 'react';
 import { Chart } from "chart.js/auto";
 import { Line } from 'react-chartjs-2';
 
+//this is a sample chart
+//hard coded data:
 const graphdata =[
     {
 		"TimeYrBP": "1000",
@@ -52,7 +54,7 @@ export default function FirstView() {
           },
           title: {
             display: true,
-            text: "Demo Co2 plot",
+            text: "Demo demo demo",
           },
         },
         scales: {
@@ -64,9 +66,10 @@ export default function FirstView() {
         },
       };
 
+    //return the line-chart
     return (
         <div style={{ width: "1000px" }}>
-        <h1>LinearLineGraphDemo</h1>
+        <h1>Demo chart for testing</h1>
         <Line options={options} data={data} />
       </div>
     );

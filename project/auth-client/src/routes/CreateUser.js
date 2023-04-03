@@ -3,6 +3,7 @@ import axios from 'axios'
 import Constants from '../Constants.json'
 import { useNavigate } from 'react-router-dom'
 
+//create a user and save to database, password is scrambled
 export default function CreateUserView() {
 
     const navigate = useNavigate();
