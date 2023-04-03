@@ -1,10 +1,10 @@
-package com.climateview.project;
+package com.security.auth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectApplicationTests {
+class AuthApplicationTests {
 
 	@Test
 	void contextLoads() {
