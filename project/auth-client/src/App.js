@@ -1,7 +1,14 @@
+import './App.css';
 import { useState } from "react";
 import axios from "axios";
 import { Buffer } from "buffer";
 
+import Home from './routes/Home';
+import CreateUser from './routes/CreateUser';
+import SecondPage from './routes/SecondPage';
+import FirstPage from './routes/FirstPage';
+import Login from './routes/Login';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
 
@@ -61,9 +68,26 @@ function App() {
       .catch( e => console.log(e.message))
   }
 
+  //structure of the web page using react router (demovideo in moodle):
   return (
+    <BrowserRouter>
     <div>
+      <div className="navbar">
+        <Link to="/"><div>Home</div></Link>
+        <Link to="/createuser"><div>Create User</div></Link>
+        <Link to="/firstpage"><div>First Page</div></Link>
+        <Link to="/secondpage"><div>Second Page</div></Link>
+        <Link to="/login"><div>Login</div></Link>
+      </div>
+      <Routes>
+        <Route path="/" element= { <Home /> } />
+        <Route path="/createuser" element= { <CreateUser /> } />
+        <Route path="/secondpage" element= { <SecondPage /> } />
+        <Route path="/firstpage" element= { <FirstPage /> } />
+        <Route path="/login" element= { <Login /> } />
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
