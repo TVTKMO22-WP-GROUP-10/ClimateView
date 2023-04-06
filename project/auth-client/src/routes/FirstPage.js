@@ -2,6 +2,7 @@ import { Chart } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 import React, { useState } from 'react'
+import TestChart from "../charts/TestChart";
 
 //Visualization 1 start
 
@@ -107,6 +108,7 @@ export default function FirstPage() {
   return (
     <div style={{ width: "1000px" }}>
       {view}
+      <TestChart />
     </div>
   );
 }
