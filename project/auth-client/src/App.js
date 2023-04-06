@@ -6,7 +6,6 @@ import { Buffer } from "buffer";
 import Home from './routes/Home';
 import CreateUser from './routes/CreateUser';
 import SecondPage from './routes/SecondPage';
-import FirstPage from './routes/FirstPage';
 import V1V3 from './routes/V1-V3';
 import Login from './routes/Login';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
@@ -76,7 +75,6 @@ function App() {
       <div className="navbar">
         <Link to="/"><div>Home</div></Link>
         <Link to="/createuser"><div>Create User</div></Link>
-        <Link to="/firstpage"><div>First Page</div></Link>
         <Link to="/V1-V3"><div>Visuals V1-V3</div></Link>
         <Link to="/secondpage"><div>Second Page</div></Link>
         <Link to="/login"><div>Login</div></Link>
@@ -86,7 +84,6 @@ function App() {
         <Route path="/createuser" element= { <CreateUser /> } />
         <Route path="/secondpage" element= { <SecondPage /> } />
         <Route path="/V1-V3" element= { <V1V3 /> } />
-        <Route path="/firstpage" element= { <FirstPage /> } />
         <Route path="/login" element= { <Login /> } />
       </Routes>
     </div>

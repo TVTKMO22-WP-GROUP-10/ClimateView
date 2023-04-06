@@ -3,23 +3,19 @@ import { Line } from "react-chartjs-2";
 import axios from "axios";
 import React, { useState } from 'react'
 
-
-//Visualization 1 start
-
 function yearDataGroubBy(data, area) {
-  let parced_data = data.filter((value) => {
-    return value["area"] === area
-  }).map((a) => {
-    return {
-      Year: a["year"].toString(),
-      Temperature: a["deg"].toString()
-    }
-  })
-  return [...parced_data]
-}
+    let parced_data = data.filter((value) => {
+      return value["area"] === area
+    }).map((a) => {
+      return {
+        Year: a["year"].toString(),
+        Temperature: a["deg"].toString()
+      }
+    })
+    return [...parced_data]
+  }
 
-export default function FirstPage() {
-
+export default function V1chart() {
   const loading = "loading"
   const error = "error"
   const done = "done"
@@ -111,5 +107,3 @@ export default function FirstPage() {
     </div>
   );
 }
-
-//End of V1, continue below
