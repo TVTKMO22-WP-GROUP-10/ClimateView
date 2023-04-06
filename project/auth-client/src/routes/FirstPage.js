@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import axios from "axios";
 import React, { useState } from 'react'
 
+
 //Visualization 1 start
 
 function yearDataGroubBy(data, area) {
