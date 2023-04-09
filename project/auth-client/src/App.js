@@ -5,7 +5,7 @@ import { Buffer } from "buffer";
 
 import Home from './routes/Home';
 import CreateUser from './routes/CreateUser';
-import SecondPage from './routes/SecondPage';
+import V4V5 from './routes/V4-V5';
 import V1V3 from './routes/V1-V3';
 import Login from './routes/Login';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
@@ -76,13 +76,13 @@ function App() {
         <Link to="/"><div>Home</div></Link>
         <Link to="/createuser"><div>Create User</div></Link>
         <Link to="/V1-V3"><div>Visuals V1-V3</div></Link>
-        <Link to="/secondpage"><div>Second Page</div></Link>
+        <Link to="/V4-V5"><div>Visuals V4-V5</div></Link>
         <Link to="/login"><div>Login</div></Link>
       </div>
       <Routes>
         <Route path="/" element= { <Home /> } />
         <Route path="/createuser" element= { <CreateUser /> } />
-        <Route path="/secondpage" element= { <SecondPage /> } />
+        <Route path="/V4-V5" element= { <V4V5 /> } />
         <Route path="/V1-V3" element= { <V1V3 /> } />
         <Route path="/login" element= { <Login /> } />
       </Routes>

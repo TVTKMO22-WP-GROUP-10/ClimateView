@@ -27,7 +27,7 @@ const graphdata =[
 	}
 ]
 
-export default function FirstView() {
+export default function V1V3Graphs() {
 
     const data = {
         datasets: [
