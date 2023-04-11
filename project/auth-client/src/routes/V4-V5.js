@@ -1,11 +1,12 @@
 import React from "react";
 import V5chart from "../components/V5chart"
+import V4chart from "../components/V4chart"
 
 export default function V4V5Graphs() {
     return (
         <div>
             <div>
-            <h1>v4 tähän</h1>
+                {V4chart()}
             </div>
             
             <div>
