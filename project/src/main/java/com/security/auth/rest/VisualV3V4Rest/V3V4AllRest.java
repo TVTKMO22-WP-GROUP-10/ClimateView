@@ -52,9 +52,9 @@ public class V3V4AllRest {
         return v4service.getV4Data();
     }
 
-    @GetMapping("/v4Finland")
-    public List<V4Data> getV4Finland(){
-        return v4service.getV4Finland();
+    @GetMapping("/v4Canada")
+    public List<V4Data> getV4Canada(){
+        return v4service.getV4Canada();
     }
 
     @GetMapping("/v4Russia")

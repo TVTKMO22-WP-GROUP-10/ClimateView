@@ -13,8 +13,8 @@ public interface V4Repo extends JpaRepository<V4Data,Long> {
     @Query(value = "select * from v4emission_transfers", nativeQuery = true)
     List<V4Data> getV4Data();
 
-    @Query(value = "SELECT * from v4emission_transfers WHERE country = 'Finland'", nativeQuery = true)
-    List<V4Data> getV4Finland();
+    @Query(value = "SELECT * from v4emission_transfers WHERE country = 'Canada'", nativeQuery = true)
+    List<V4Data> getV4Canada();
 
     @Query(value = "SELECT * from v4emission_transfers WHERE country = 'Russian Federation'", nativeQuery = true)
     List<V4Data> getV4Russia();

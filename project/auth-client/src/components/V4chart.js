@@ -4,13 +4,13 @@ import { Line } from 'react-chartjs-2';
 import axios from "axios";
 import Constants from "../Constants.json"
 
-const reqFinland = axios.get(Constants.API_ADDRESS + "/v4Finland")
+const reqCanada = axios.get(Constants.API_ADDRESS + "/v4Canada")
 const reqChina = axios.get(Constants.API_ADDRESS + "/v4China")
 const reqRussia = axios.get(Constants.API_ADDRESS + "/v4Russia")
 const reqUsa = axios.get(Constants.API_ADDRESS + "/v4Usa")
 
-axios.all([reqFinland, reqChina, reqRussia, reqUsa]).then(axios.spread((...responses) => {
-    const respFinland = responses[0].data
+axios.all([reqCanada, reqChina, reqRussia, reqUsa]).then(axios.spread((...responses) => {
+    const respCanada = responses[0].data
     const respChina = responses[1].data
     const respRussia = responses[2].data
     const respUsa = responses[3].data
@@ -24,9 +24,9 @@ export default function V4chart() {
     const [statusState, setStatusState] = useState(loading);
     
     if(statusState=== loading) {
-        axios.all([reqChina, reqFinland, reqRussia, reqUsa]).then(axios.spread((...responses) => {
+        axios.all([reqChina, reqCanada, reqRussia, reqUsa]).then(axios.spread((...responses) => {
             const respChina = responses[0].data;
-            const respFinland = responses[1].data;
+            const respCanada = responses[1].data;
             const respRussia = responses[2].data;
             const respUsa = responses[3].data;
     
@@ -49,15 +49,15 @@ export default function V4chart() {
                         pointRadius: 0.5,
                     },
                     {
-                        label: "Finland",
-                        data: respFinland.map(data => {
+                        label: "Canada",
+                        data: respCanada.map(data => {
                             return{
                                 mtc: data.mtc*3.664,
                                 year: data.year
                             }
                         }),
                         parsing: {
-                            xAxisKey: "Year",
+                            xAxisKey: "year",
                             yAxisKey: "mtc"
                         },
                         pointRadius: 0.5,
@@ -125,8 +125,15 @@ switch (statusState) {
 }
 
     return (
-        <div style={{ width: "1000px" }}>
-            {view}
+        <div>
+            <div style={{ width: "1000px" }}>
+                {view}
+            </div>
+            <div>
+                <p>Co2 emissions of selected countries over the period of ~60 years.</p>
+                <a href='https://www.icos-cp.eu/science-and-impact/global-carbon-budget/2021'>Description</a>
+                <a href='https://data.icos-cp.eu/licence_accept?ids=%5B%22lApekzcmd4DRC34oGXQqOxbJ%22%5D'>Dataset</a>
+            </div>
         </div>
     );
 }
