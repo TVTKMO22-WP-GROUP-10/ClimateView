@@ -17,8 +17,8 @@ public class V4Service {
         return v4Repo.getV4Data();
     }
 
-    public List<V4Data> getV4Finland(){
-        return v4Repo.getV4Finland();
+    public List<V4Data> getV4Canada(){
+        return v4Repo.getV4Canada();
     }
 
     public List<V4Data> getV4Russia(){

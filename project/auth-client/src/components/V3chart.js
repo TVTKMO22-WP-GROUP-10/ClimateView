@@ -6,10 +6,12 @@ import Constants from "../Constants.json"
 
 const req1 = axios.get(Constants.API_ADDRESS + "/temp");
 const req2 = axios.get(Constants.API_ADDRESS + "/co2");
+const req3 = axios.get(Constants.API_ADDRESS + "/activities");
 
-axios.all([req1, req2]).then(axios.spread((...responses) => {
+axios.all([req1, req2, req3]).then(axios.spread((...responses) => {
     const tempData = responses[0].data;
     const co2Data = responses[1].data;
+    const activityData = responses[2].data;
 }));
 
 export default function V3chart() {
@@ -20,9 +22,10 @@ export default function V3chart() {
     const [statusState, setStatusState] = useState(loading);
     
     if(statusState === loading) {
-        axios.all([req1, req2]).then(axios.spread((...responses) => {
+        axios.all([req1, req2, req3]).then(axios.spread((...responses) => {
                 const tempData = responses[0].data;
                 const co2Data = responses[1].data;
+                const activityData = responses[2].data;
 
                 setStatusState({
                     labels: tempData.map((data) => data.timeGast*1000),
@@ -52,6 +55,23 @@ export default function V3chart() {
                             pointRadius: 0.5,
                             yAxisID: "ppm",
                         },
+                        {
+                            label: "activity",
+                            data: activityData.map((data) => {
+                                return {
+                                    year: data.year,
+                                    activities: data.activities,
+                                    temp: 3,
+                                }
+                            }),
+                            parsing: {
+                                xAxisKey: "year",
+                                yAxisKey: "temp"
+                            },
+                            pointRadius: 1,
+                            yAxisID: "temp2",
+                            showLine: false,
+                        },
                     ]
                 });
             }))
@@ -69,6 +89,10 @@ export default function V3chart() {
             },
             ppm: {
                 position: "right"
+            },
+            temp2: {
+                position: "left",
+                display: false,
             }
         },
         plugins: {
@@ -96,8 +120,17 @@ export default function V3chart() {
     }
 
     return (
-    <div style={{ width: "1000px" }}>
-        {view}
-    </div>
+        <div>
+            <div style={{ width: "1000px" }}>
+                {view}
+            </div>
+            <div>
+                <p>Evolution of temperature and recorded co2 emissions over the span of ~2 million years, 
+                    accompanied by select points of human activity</p>
+                <a href='https://climate.fas.harvard.edu/files/climate/files/snyder_2016.pdf'>Description for used temperature data</a>
+                <a href='http://carolynsnyder.com/papers/Snyder_Data_Figures.zip'>Dataset for used temperature data</a>
+                <a href="https://www.southampton.ac.uk/~cpd/history.html">Dataset for used human activity data</a>
+            </div>
+        </div>
     );
 }
