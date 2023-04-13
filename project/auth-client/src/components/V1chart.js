@@ -1,29 +1,7 @@
-import React, { useState } from 'react';
-import { Chart } from "chart.js/auto";
-import { Line } from 'react-chartjs-2';
-import axios from "axios";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import Constants from "../Constants.json"
-
-//Pyynnöt
-const requestMonthly = axios.get(Constants.API_ADDRESS + "/v1monthly")
-const requestYearly = axios.get(Constants.API_ADDRESS + "/v1year")
-
-axios.all([requestMonthly, requestYearly]).then(axios.spread((...responses) => {
-    const respYear = responses[0].data
-    const respMonth = responses[1].data
-}))
-
-function monthlyDataGroubBy(data, area) {
-    let parced_data = data.filter((value) => {
-        return value["area"] === area
-    }).map((a) => {
-        return {
-            Year: a["year"].toString() + "-" + a["month"].toString(),
-            Temperature: a["deg"].toString()
-        }
-    })
-    return [...parced_data]
-}
+import { Line } from "react-chartjs-2";
 
 function yearDataGroubBy(data, area) {
     let parced_data = data.filter((value) => {
@@ -37,119 +15,222 @@ function yearDataGroubBy(data, area) {
     return [...parced_data]
   }
 
-export default function FirstView() {
-    const loading = "loading"
-    const error = "error"
-    const done = "done"
-
-    const [statusState, setStatusState] = useState(loading);
-
-    if (statusState === loading) {
-        axios.all([requestMonthly, requestYearly]).then(axios.spread((...responses) => {
-            const respMonth = responses[0].data
-            const respYear = responses[1].data
-        
-                    setStatusState({
-                        datasets: [
-                            {
-                                label: "Northern monthly",
-                                data: monthlyDataGroubBy(respMonth, "northern_monthly"),
-                                parsing: {
-                                    xAxisKey: "Year",
-                                    yAxisKey: "Temperature"
-                                },
-                                pointRadius: 0.5,
-                            },
-                            {
-                                label: "southern monthly",
-                                data: monthlyDataGroubBy(respMonth, "southern_monthly"),
-                                borderColor: "rgb(201, 40, 12)",
-                                backgroundColor: "rgba(255, 99, 132, 0.5)",
-                                parsing: {
-                                    xAxisKey: "Year",
-                                    yAxisKey: "Temperature"
-                                },
-                                pointRadius: 1,
-                            },
-                            {
-                                label: "Global monthly",
-                                data: monthlyDataGroubBy(respMonth, "global_monthly"),
-                                borderColor: "rgb(145, 49, 112)",
-                                backgroundColor: "rgba(255, 99, 132, 0.5)",
-                                parsing: {
-                                    xAxisKey: "Year",
-                                    yAxisKey: "Temperature"
-                                },
-                                pointRadius: 1,
-                            },
-                            {
-                                label: "Northern annual",
-                                data: yearDataGroubBy(respYear, "northern_annual"),
-                                parsing: {xAxisKey: "Year",
-                                          yAxisKey: "Temperature"},
-                                pointRadius: 1,
-                            },
-                            {
-                                label: "southern annual",
-                                data: yearDataGroubBy(respYear, "southern_annual"),
-                                borderColor: "rgb(201, 40, 12)",
-                                backgroundColor: "rgba(255, 99, 132, 0.5)",
-                                parsing: {xAxisKey: "Year",
-                                          yAxisKey: "Temperature"},
-                                pointRadius: 1,
-                              },
-                              {
-                                label: "Global annual",
-                                data: yearDataGroubBy(respYear, "global_annual"),
-                                borderColor: "rgb(145, 49, 112)",
-                                backgroundColor: "rgba(255, 99, 132, 0.5)",
-                                parsing: {xAxisKey: "Year",
-                                          yAxisKey: "Temperature"},
-                                pointRadius: 1,
-                              },
-
-
-
-                        ]
-                    });
-                
-                
-            })).catch((err) => {
-                console.log(err)
-                setStatusState(error)
-            }
-            )
-    }
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: "top",
-            },
-            title: {
-                display: true,
-                text: "Visualization 1",
-            },
-        },
-    };
-
-    let view = null
-
-    switch (statusState) {
-        case loading:
-            view = <h1>Loading</h1>
-            break;
-        case error:
-            view = <h1>Error</h1>
-            break;
-        default:
-            view = <Line options={options} data={statusState} />
-    }
-
-    return (
-        <div style={{ width: "1000px" }}>
-            {view}
-        </div>
-    );
+  function monthlyDataGroubBy(data, area) {
+    let parced_data = data.filter((value) => {
+        return value["area"] === area
+    }).map((a) => {
+        return {
+            Year: a["year"].toString() + "-" + a["month"].toString(),
+            Temperature: a["deg"].toString()
+        }
+    })
+    return [...parced_data]
 }
+
+function convertDataToString(data){
+  let stringed_data = data.map((a) =>{
+    return{
+      Year: a["year"].toString(),
+      Temperature: a["temp"].toString()
+    }
+  })
+  return[...stringed_data]
+}
+
+export default function FirstView() {
+
+    const [v1dataState, setV1DataState] = useState([]);
+    const [v1RecoDataState, setV1RecoDataState] = useState([]);
+    const [v1MonthlyDataState, setV1monthlyDataState] = useState([]);
+    const [chartState, setChartState] = useState("");
+
+    const getVis1YearlyData = async () => {
+        await axios.get(Constants.API_ADDRESS + "/v1year")
+          .then((response) => {
+            setV1DataState(response.data);
+            const testi =yearDataGroubBy(response.data, "southern_annual")
+            console.log("XXXX")
+            console.log(testi)
+          })
+          .catch(error => console.error(`Error: ${error}`));
+      }
+    
+      useEffect(() => {
+        getVis1YearlyData();
+      }, []);
+
+      const getVis1monthlyData = async () => {
+        await axios.get(Constants.API_ADDRESS + "/v1monthly")
+          .then((response) => {
+            setV1monthlyDataState(response.data);
+          })
+          .catch(error => console.error(`Error: ${error}`));
+      }
+    
+      useEffect(() => {
+        getVis1monthlyData();
+      }, []);
+
+      const getVis1RecoData = async () => {
+        await axios.get(Constants.API_ADDRESS + "/v1reconstruction")
+          .then((response) => {
+            setV1RecoDataState(response.data);
+            const testi = convertDataToString(response.data)
+            console.log("Reco")
+            console.log(testi)
+          })
+          .catch(error => console.error(`Error: ${error}`));
+      }
+    
+      useEffect(() => {
+        getVis1RecoData();
+      }, []);
+
+      const dataYearly = {
+        datasets: [
+            {
+              label: "Northern annual anomalies",
+              data: yearDataGroubBy(v1dataState, "northern_annual"),
+              borderColor:       'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 1)',
+              parsing: {xAxisKey: "Year",
+                        yAxisKey: "Temperature"},
+              pointRadius: 1,
+            },
+            {
+                label: "Southern annual anomalies",
+                data: yearDataGroubBy(v1dataState, "southern_annual"),
+                borderColor: "rgb(201, 40, 12)",
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                parsing: {xAxisKey: "Year",
+                          yAxisKey: "Temperature"},
+                pointRadius: 1,
+              },
+              {
+                label: "Global annual anomalies",
+                data: yearDataGroubBy(v1dataState, "global_annual"),
+                borderColor: "rgb(145, 49, 112)",
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                parsing: {xAxisKey: "Year",
+                          yAxisKey: "Temperature"},
+                pointRadius: 1,
+              },
+              
+        ]
+      };
+
+      const optionsYearly = {
+        responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Visualization 1",
+      },
+    },
+      };
+
+      const dataMonthly = {
+        datasets: [
+            {
+                label: "Northern monthly anomalies",
+                data: monthlyDataGroubBy(v1MonthlyDataState, "northern_monthly"),
+                borderColor: 'rgba(111, 208, 172, 0.8)',
+                backgroundColor: 'rgba(136, 238, 200, 0.8)',
+                parsing: {
+                    xAxisKey: "Year",
+                    yAxisKey: "Temperature"
+                },
+                pointRadius: 0.5,
+                borderWidth: 1,
+            },
+            {
+                label: "Southern monthly anomalies",
+                data: monthlyDataGroubBy(v1MonthlyDataState, "southern_monthly"),
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                parsing: {
+                    xAxisKey: "Year",
+                    yAxisKey: "Temperature"
+                },
+                pointRadius: 0.5,
+                borderWidth: 1,
+            },
+            {
+                label: "Global monthly anomalies",
+                data: monthlyDataGroubBy(v1MonthlyDataState, "global_monthly"),
+                borderColor: "rgb(145, 49, 112)",
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                parsing: {
+                    xAxisKey: "Year",
+                    yAxisKey: "Temperature"
+                },
+                pointRadius: 0.5,
+                borderWidth: 1,
+            },
+        ]
+
+      };
+
+      const optionsMonthly = {
+        
+      };
+
+      const dataReco = {
+        datasets : [
+          {
+            label: "Reconstruction",
+            data: convertDataToString(v1RecoDataState) ,
+            borderColor: "rgb(145, 49, 112)",
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            parsing: {xAxisKey: "Year",
+                      yAxisKey: "Temperature"},
+            pointRadius: 1,
+          },
+        ]
+      }
+
+      const optionsReco ={
+
+      }
+
+let view = null;
+      switch (chartState) {
+        case "option1":
+          view = <Line options={optionsYearly} data={dataYearly} />
+          break;
+        case "option2":
+          view = <Line options={optionsMonthly} data={dataMonthly} />
+          break;
+        case "option3":
+          view = <Line options={optionsReco} data ={dataReco} />
+       // default:
+         //view = <Line options={optionsYearly} data={dataYearly} />
+      }
+
+      const handleOptionChange = (x) => {
+        setChartState(x.target.value);
+      }
+
+  return (
+
+    <div>
+        <h1 style={{ fontSize: 15 }}>Select dataset for visualization 1:</h1>
+      <label>
+        <input type="radio" value="option1" checked={chartState === "option1"} onChange={handleOptionChange} />
+        Show  yearly data
+      </label>
+      <label>
+        <input type="radio" value="option2" checked={chartState === "option2"} onChange={handleOptionChange} />
+        Show monthly data
+      </label>
+      <label>
+        <input type="radio" value="option3" checked={chartState === "option3"} onChange={handleOptionChange} />
+        Show reconstruction data
+      </label>
+      {view}
+    </div>
+    );
+  }
