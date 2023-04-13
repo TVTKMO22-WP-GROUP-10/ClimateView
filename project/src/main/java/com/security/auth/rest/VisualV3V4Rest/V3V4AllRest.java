@@ -30,6 +30,7 @@ public class V3V4AllRest {
     @Autowired
     V4Service v4service;
 
+    //v3
     @GetMapping("/temp")
     public List<V3temp> getTempData(){
         return tempService.getTempData();
@@ -51,5 +52,24 @@ public class V3V4AllRest {
         return v4service.getV4Data();
     }
 
+    @GetMapping("/v4Canada")
+    public List<V4Data> getV4Canada(){
+        return v4service.getV4Canada();
+    }
+
+    @GetMapping("/v4Russia")
+    public List<V4Data> getV4Russia(){
+        return v4service.getV4Russia();
+    }
+
+    @GetMapping("/v4China")
+    public List<V4Data> getV4China(){
+        return v4service.getV4China();
+    }
+
+    @GetMapping("/v4Usa")
+    public List<V4Data> getV4Usa(){
+        return v4service.getV4Usa();
+    }
     
 }
