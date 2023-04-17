@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import React, { useState, useEffect, useRef } from 'react';
+import { Doughnut, getElementsAtEvent } from 'react-chartjs-2';
 import axios from 'axios';
 import Constants from "../Constants.json"
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 function findPercent(data, identifier) {
   const result = [];
@@ -25,60 +27,226 @@ function findSector(data, identifier) {
   return result;
 }
 
-export default function FirstView() {
-  const loading = "loading"
-  const error = "error"
-  const done = "done"
+export default function TestV5Chart() {
 
-  const [statusState, setStatusState] = useState(loading);
+  const [chartState, setChartState] = useState("");
+  const [visDataState, setVisDataState] = useState([]);
 
-  if (statusState === loading) {
-    axios.get(Constants.API_ADDRESS + "/v5data")
-      .then((resp) => {
-        console.log(resp)
-        setStatusState({
-          labels: findSector(resp.data, "main"),
-          datasets: [
-            {
-              label: 'Percentage',
-              data: findPercent(resp.data, "main"),
-              borderWidth: 1,
-            },
-          ],
-        });
+  const getVis5Data = async () => {
+    await axios.get(Constants.API_ADDRESS + "/v5data")
+      .then((response) => {
+        setVisDataState(response.data);
+      })
+      .catch(error => console.error(`Error: ${error}`));
+  }
+
+  useEffect(() => {
+    getVis5Data();
+  }, []);
+
+  const data1 = {
+    labels: findSector(visDataState, "main"),
+    datasets: [
+      {
+        label: 'Percent of emissions',
+        data: findPercent(visDataState, "main"),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+        ],
+        borderWidth: 1,
       },
-        (rej) => {
-          console.log(rej)
-          setStatusState(test)
-        }
-      ).catch((err) => {
-        console.log(err)
-        setStatusState(error)
+    ],
+  };
+
+  const dataAgri = {
+    labels: findSector(visDataState, "agri"),
+    datasets: [
+      {
+        label: 'Percent of emissions',
+        data: findPercent(visDataState, "agri"),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+        ],
+        borderWidth: 1,
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const dataEnergy = {
+    labels: findSector(visDataState, "energy"),
+    datasets: [
+      {
+        label: 'Percent of emissions',
+        data: findPercent(visDataState, "energy"),
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const dataIndustrial = {
+    labels: findSector(visDataState, "industrial"),
+    datasets: [
+      {
+        label: 'Percent of emissions',
+        data: findPercent(visDataState, "industrial"),
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const dataWaste = {
+    labels: findSector(visDataState, "waste"),
+    datasets: [
+      {
+        label: 'Percent of emissions',
+        data: findPercent(visDataState, "waste"),
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options1 = {
+    plugins: {
+      title: {
+        align: "center",
+        display: true,
+        text: [
+          "Visalization 5, emissions by sector:",
+          "Click on a section to open subsection"
+
+        ]
       }
-      )
+    }
+  };
+
+  const optionsAgri = {
+    plugins: {
+      title: {
+        align: "center",
+        display: true,
+        text:
+          "Emissions from agriculture sector:",
+
+      }
+    }
+  };
+
+  const optionsEnergy = {
+    plugins: {
+      title: {
+        align: "center",
+        display: true,
+        text:
+          "Emissions from energy sector:",
+
+      }
+    }
+  };
+
+  const optionsIndustrial = {
+    plugins: {
+      title: {
+        align: "center",
+        display: true,
+        text:
+          "Emissions from industrial processes:",
+      }
+    }
+  };
+
+  const optionsWaste = {
+    plugins: {
+      title: {
+        align: "center",
+        display: true,
+        text:
+          "Emissions from waste management sector:",
+
+      }
+    }
+  };
+
+  const chartRef = useRef();
+
+  const onClick = (event) => {
+    if (getElementsAtEvent(chartRef.current, event).length > 0) {
+      const datasetIndexNum = getElementsAtEvent(chartRef.current, event)[0].datasetIndex;
+      const dataPoint = getElementsAtEvent(chartRef.current, event)[0].index;
+
+      console.log(`Dataset : ${datasetIndexNum} and Data: ${dataPoint}`);
+
+      if (getElementsAtEvent(chartRef.current, event)[0].index === 0) {
+        setChartState(0);
+      } else if (getElementsAtEvent(chartRef.current, event)[0].index === 1) {
+        setChartState(1);
+      } else if (getElementsAtEvent(chartRef.current, event)[0].index === 2) {
+        setChartState(2);
+      } else if (getElementsAtEvent(chartRef.current, event)[0].index === 3) {
+        setChartState(3);
+      }
+    }
+
   }
 
   let view = null
 
-  switch (statusState) {
-    case loading:
-      view = <h1>Loading</h1>
+  switch (chartState) {
+    case 0:
+      view = <Doughnut options={optionsAgri} data={dataAgri} />
       break;
-    case error:
-      view = <h1>Error</h1>
+    case 1:
+      view = <Doughnut options={optionsEnergy} data={dataEnergy} />
       break;
-    default:
-      view = <Doughnut data={statusState} />
+    case 2:
+      view = <Doughnut options={optionsIndustrial} data={dataIndustrial} />
+      break;
+    case 3:
+      view = <Doughnut options={optionsWaste} data={dataWaste} />
+      break;
+    //default:
   }
 
-  
-
   return (
-      <div style={{ width: "500px" }}>
-        <h1>Visualization 5:</h1>
-        {view}
+    <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div style={{ flex: "1 1 400px", display: "flex", alignItems: "stretch" }}>
+        <div style={{ flex: 1 }}>
+          <Doughnut data={data1} options={options1}
+            onClick={onClick}
+            ref={chartRef} />
+        </div>
+        <div style={{ flex: 1 }}>
+          {view}
+        </div>
       </div>
-  );
+    </div>
+
+
+  )
 
 
 }
