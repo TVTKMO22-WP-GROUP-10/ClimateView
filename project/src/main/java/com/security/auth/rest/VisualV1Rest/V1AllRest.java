@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.security.auth.data.VisualV1.V1Monthly;
+import com.security.auth.data.VisualV1.V1Reconstruction;
 import com.security.auth.data.VisualV1.V1Yearly;
 import com.security.auth.service.VisualV1Services.V1AllService;
 
@@ -26,6 +27,11 @@ public class V1AllRest {
     @GetMapping("/v1monthly")
     public List<V1Monthly> getMonthlyData(){
         return v1AllService.getV1Monthly();
+    }
+
+    @GetMapping("/v1reconstruction")
+    public List<V1Reconstruction> getReconstructionData(){
+        return v1AllService.getV1Reconstruction();
     }
 
 }

@@ -8,12 +8,6 @@ const req1 = axios.get(Constants.API_ADDRESS + "/temp");
 const req2 = axios.get(Constants.API_ADDRESS + "/co2");
 const req3 = axios.get(Constants.API_ADDRESS + "/activities");
 
-axios.all([req1, req2, req3]).then(axios.spread((...responses) => {
-    const tempData = responses[0].data;
-    const co2Data = responses[1].data;
-    const activityData = responses[2].data;
-}));
-
 export default function V3chart() {
     const loading = "loading"
     const error = "error"
@@ -68,8 +62,9 @@ export default function V3chart() {
                                 xAxisKey: "year",
                                 yAxisKey: "temp"
                             },
-                            pointRadius: 1,
-                            yAxisID: "temp2",
+                            pointRadius: 6,
+                            pointStyle: "triangle",
+                            yAxisID: "temp",
                             showLine: false,
                         },
                     ]
@@ -90,10 +85,6 @@ export default function V3chart() {
             ppm: {
                 position: "right"
             },
-            temp2: {
-                position: "left",
-                display: false,
-            }
         },
         plugins: {
             legend: {
@@ -103,6 +94,13 @@ export default function V3chart() {
                 display: true,
                 text: "Visualization 3",
             },
+            tooltip: {
+                callbacks: {
+                    label: (context) => {
+                        return context.raw.activities
+                    }
+                }
+            }
         }, 
     };
 
