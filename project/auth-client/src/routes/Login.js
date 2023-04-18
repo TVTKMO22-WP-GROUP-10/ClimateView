@@ -19,10 +19,10 @@ export default function LoginView() {
         }
       }
       )
-        .then((response) => {
-          console.log(response.data);
-        })
-
+      localStorage.setItem("token", result.data)
+      console.log(result);
+      console.log("XXXX");
+       
     } catch (error) {
       console.error(error);
     }
