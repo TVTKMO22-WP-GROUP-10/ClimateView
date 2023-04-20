@@ -36,11 +36,13 @@ export default function V2chart() {
       //      console.log(responses[4].data);
 
       const icecore1 = responses[0].data;
-      //const icecore2 = responses[1].data;
-      //const icecore3 = responses[2].data;
+      const icecore2 = responses[1].data;
+      const icecore3 = responses[2].data;
+//      const maunaloaY = responses[3].data;
+//      const maunaloaM = responses[4].data;
 
       setStatusState({
-        labels: icecore1.map((data) => data.year),
+//        labels: icecore3.map(data => data.year),
         datasets: [
           {
             label: "icecore1",
@@ -57,6 +59,36 @@ export default function V2chart() {
             },
             pointRadius: 1,
 
+          },
+          {
+            label: "icecore2",
+            data: icecore2.map(data => {
+              return {
+                year: data.year,
+                co2ppm: data.co2ppm
+              };
+            })
+            ,
+            parsing: {
+              xAxisKey: "year",
+              yAxisKey: "co2ppm"
+            },
+            pointRadius: 1,
+          },
+          {
+            label: "icecore3",
+            data: icecore3.map(data => {
+              return {
+                year: data.year,
+                co2ppm: data.co2ppm
+              };
+            })
+            ,
+            parsing: {
+              xAxisKey: "year",
+              yAxisKey: "co2ppm"
+            },
+            pointRadius: 1,
           }
         ]
       });
@@ -76,7 +108,7 @@ export default function V2chart() {
       },
     }
   }
-  
+
   var showStatus;
     switch (statusState) {
       case loading:
