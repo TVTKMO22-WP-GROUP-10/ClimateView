@@ -24,7 +24,7 @@ public class V2AllRest {
     }
     @GetMapping("/v2icecore2")
     public List<V2Yearly> getV2icecore2() {
-        return v2serv.getV2icecore1();
+        return v2serv.getV2icecore2();
     }
     @GetMapping("/v2icecore3")
     public List<V2Yearly> getV2icecore3() {
