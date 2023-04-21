@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Constants from "../Constants.json"
 
-export default function LoginView() {
+export default function LoginView(props) {
 
   const navigate = useNavigate();
   const [loginState, setLoginState] = useState("idle")
@@ -22,7 +22,10 @@ export default function LoginView() {
         }
       )
       localStorage.setItem("token", result.data)
-      console.log("Response of post request: " + result);
+      console.log("Response of post request: " + localStorage.getItem('token'));
+      const receivedJwt = result.data;
+      props.login(receivedJwt)
+      console.log("xxxx:  " + receivedJwt)
       setLoginState("loginSuccess")
       setTimeout(() => {
         navigate('/', { replace: true });

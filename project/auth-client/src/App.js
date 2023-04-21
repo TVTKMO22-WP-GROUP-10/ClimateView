@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Buffer } from "buffer";
 import Home from './routes/Home';
@@ -7,6 +7,7 @@ import CreateUser from './routes/CreateUser';
 import V4V5 from './routes/V4-V5';
 import V1V3 from './routes/V1-V3';
 import Login from './routes/Login';
+import Protected from "./routes/Protected"
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 
   const [uname, setUname] = useState("repe");
   const [pw, setPw] = useState("repe");
+  const [userJwt, setUserJwt] = useState(null);
 
   /**
    * Sends creadentials in form data
@@ -68,13 +70,28 @@ function App() {
       .catch(e => console.log(e.message))
   }
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
+  let authRoutes = <>
+    <Route path="/createuser" element={<CreateUser />} />
+    <Route path="/V4-V5" element={<V4V5 />} />
+    <Route path="/V1-V3" element={<V1V3 />} />
+    <Route path="/login" element={<Login login={ (newJwt) => {
+      setUserJwt(newJwt)
+    }} />} />
+  </>
+
+  if(userJwt != null) {
+    authRoutes = <>
+      <Route path="/Protected" element={<Protected />} />
+      <Route path="/V4-V5" element={<V4V5 />} />
+      <Route path="/V1-V3" element={<V1V3 />} />
+    </>
+  }
 
   return (
     <BrowserRouter>
       <div>
         <div className="navbar">
-          {isUserLoggedIn ?
+          {userJwt != null ?
             <>
               <Link to="/"><div>Home</div></Link>
               <Link to="/V1-V3"><div>Visuals V1-V3</div></Link>
@@ -89,16 +106,11 @@ function App() {
               <Link to="/login"><div>Login</div></Link>
             </>
           }
-
-
         </div>
         <Routes>
-
-          <Route path="/" element={<Home userLoggedIn={isUserLoggedIn} />} />
-          <Route path="/createuser" element={<CreateUser />} />
-          <Route path="/V4-V5" element={<V4V5 />} />
-          <Route path="/V1-V3" element={<V1V3 />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home userLoggedIn= {userJwt != null} />} />
+          {authRoutes}
+          <Route path="*"element={<Home userLoggedIn= {userJwt != null} />} />
         </Routes>
       </div>
     </BrowserRouter>
