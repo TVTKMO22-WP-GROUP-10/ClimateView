@@ -75,9 +75,7 @@ export default function FirstView() {
         await axios.get(Constants.API_ADDRESS + "/v1reconstruction")
           .then((response) => {
             setV1RecoDataState(response.data);
-            const testi = convertDataToString(response.data)
-            console.log("Reco")
-            console.log(testi)
+            
           })
           .catch(error => console.error(`Error: ${error}`));
       }
@@ -206,8 +204,8 @@ let view = null;
           break;
         case "option3":
           view = <Line options={optionsReco} data ={dataReco} />
-       // default:
-         //view = <Line options={optionsYearly} data={dataYearly} />
+        default:
+         view = <Line options={optionsYearly} data={dataYearly} />
       }
 
       const handleOptionChange = (x) => {
