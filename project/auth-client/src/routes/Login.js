@@ -22,10 +22,9 @@ export default function LoginView(props) {
         }
       )
       localStorage.setItem("token", result.data)
-      console.log("Response of post request: " + localStorage.getItem('token'));
+      
       const receivedJwt = result.data;
       props.login(receivedJwt)
-      console.log("xxxx:  " + receivedJwt)
       setLoginState("loginSuccess")
       setTimeout(() => {
         navigate('/', { replace: true });
