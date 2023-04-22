@@ -42,7 +42,7 @@ export default function FirstView() {
     const [v1dataState, setV1DataState] = useState([]);
     const [v1RecoDataState, setV1RecoDataState] = useState([]);
     const [v1MonthlyDataState, setV1monthlyDataState] = useState([]);
-    const [chartState, setChartState] = useState("");
+    const [chartState, setChartState] = useState("option1");
 
     const getVis1YearlyData = async () => {
         await axios.get(Constants.API_ADDRESS + "/v1year")
@@ -75,9 +75,7 @@ export default function FirstView() {
         await axios.get(Constants.API_ADDRESS + "/v1reconstruction")
           .then((response) => {
             setV1RecoDataState(response.data);
-            const testi = convertDataToString(response.data)
-            console.log("Reco")
-            console.log(testi)
+            
           })
           .catch(error => console.error(`Error: ${error}`));
       }
@@ -206,8 +204,6 @@ let view = null;
           break;
         case "option3":
           view = <Line options={optionsReco} data ={dataReco} />
-       // default:
-         //view = <Line options={optionsYearly} data={dataYearly} />
       }
 
       const handleOptionChange = (x) => {

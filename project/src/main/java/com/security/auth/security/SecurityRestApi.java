@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.security.auth.data.User;
 
 
-@CrossOrigin  //Allowing CORS
+@CrossOrigin
 @RestController
 public class SecurityRestApi {
     @Autowired
@@ -51,6 +51,7 @@ public class SecurityRestApi {
             return new ResponseEntity<>(token, headers, HttpStatus.OK);
         }
 
+        
     @GetMapping("private")
     public ResponseEntity<String> getPrivateData(@RequestHeader("Authorization") String bearer){
 
