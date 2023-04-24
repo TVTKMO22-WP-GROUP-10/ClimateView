@@ -15,7 +15,7 @@ function App() {
 
   const [uname, setUname] = useState("repe");
   const [pw, setPw] = useState("repe");
-  const [userJwt, setUserJwt] = useState(null);
+  const [userJwt, setUserJwt] = useState(localStorage.getItem('token'));
 
   /**
    * Sends creadentials in form data
@@ -74,9 +74,9 @@ function App() {
     <Route path="/createuser" element={<CreateUser />} />
     <Route path="/V4-V5" element={<V4V5 />} />
     <Route path="/V1-V3" element={<V1V3 />} />
-    <Route path="/login" element={<Login login={ (newJwt) => {
+    <Route path="/login" element={<Login login={ (newJwt) => 
       setUserJwt(newJwt)
-    }} />} />
+    } />} />
   </>
 
   if(userJwt != null) {
@@ -96,6 +96,11 @@ function App() {
               <Link to="/"><div>Home</div></Link>
               <Link to="/V1-V3"><div>Visuals V1-V3</div></Link>
               <Link to="/V4-V5"><div>Visuals V4-V5</div></Link>
+              <button onClick={() => {
+                localStorage.removeItem('token');
+                window.location.reload(true);
+              }}>Log out</button>
+
             </>
             :
             <>
