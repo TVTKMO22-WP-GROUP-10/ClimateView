@@ -4,9 +4,11 @@ import {
   LineElement, CategoryScale,
   LinearScale, PointElement,
 } from 'chart.js';
+import 'chartjs-adapter-luxon';
 import React, { useState } from "react";
 import axios from 'axios';
 import Constants from "../Constants.json";
+import { DateTime } from 'luxon';
 
 ChartJS.register(
   LineElement, CategoryScale,
@@ -21,14 +23,14 @@ const reqM = axios.get(Constants.API_ADDRESS + "/v2maunaloaMonthly");
 
 const sortedYears = [];
 
-// function parsingYears(arr){
-//   arr.forEach(data => {
-//     const year = data.year;
-//     if (!sortedYears.includes(year)) {
-//       sortedYears.push(year);
-//     }
-//   })
-// }
+function parsingYears(arr){
+  arr.forEach(data => {
+    const year = data.year;
+    if (!sortedYears.includes(year)) {
+      sortedYears.push(year);
+    }
+  })
+}
 
 
 export default function V2chart() {
@@ -46,22 +48,43 @@ export default function V2chart() {
       const icecore2 = responses[1].data;
       const icecore3 = responses[2].data;
       const maunaloaY = responses[3].data;
-      //      const maunaloaM = responses[4].data;
+      const maunaloaM = responses[4].data;
 
-      //parsingYears(icecore1);
+      parsingYears(icecore1);
+      parsingYears(icecore2);
+      parsingYears(icecore3);
+      parsingYears(maunaloaY);
+      parsingYears(maunaloaM);
+
+      const labels = sortedYears.sort();
 
       setStatusState({
-        //labels: labels,
+        //labels,
         datasets: [
           {
             label: "Maunaloa Annual",
             data: maunaloaY.map(data => {
               return {
-                year: data.year,
+                year: DateTime.fromObject({year: data.year}).toISODate(),
                 co2ppm: data.co2ppm
               };
             }),
-              parsing: {
+            parsing: {
+              xAxisKey: "year",
+              yAxisKey: "co2ppm"
+            },
+            pointRadius: 1,
+            xAxisID: "year"
+          },
+          {
+            label: "Maunaloa Monthly",
+            data: maunaloaM.map(data => {
+              return {
+                year: DateTime.fromObject({year: data.year,month: data.month}).toISODate(),
+                co2ppm: data.co2ppm
+              };
+            }),
+            parsing: {
               xAxisKey: "year",
               yAxisKey: "co2ppm"
             },
@@ -72,7 +95,7 @@ export default function V2chart() {
             label: "icecore1",
             data: icecore1.map(data => {
               return {
-                year: data.year,
+                year: DateTime.fromObject({year: data.year}).toISODate(),
                 co2ppm: data.co2ppm
               };
             })
@@ -88,7 +111,7 @@ export default function V2chart() {
             label: "icecore2",
             data: icecore2.map(data => {
               return {
-                year: data.year,
+                year: DateTime.fromObject({year: data.year}).toISODate(),
                 co2ppm: data.co2ppm
               };
             })
@@ -104,7 +127,7 @@ export default function V2chart() {
             label: "icecore3",
             data: icecore3.map(data => {
               return {
-                year: data.year,
+                year: DateTime.fromObject({year: data.year}).toISODate(),
                 co2ppm: data.co2ppm
               };
             })
@@ -126,12 +149,16 @@ export default function V2chart() {
   const options = {
     scales: {
       year: {
+        type: "time",
+        position: "bottom",
+        time:{
+          unit: "year"
+        },
         ticks: {
           stepSize: 1.0,
-        },
-        // suggestedMin: 1000,
-        // suggestedMax: 2023
-      },
+        }
+      }
+    },
     plugins: {
       legend: {
         position: "top",
@@ -140,7 +167,6 @@ export default function V2chart() {
         display: true,
         text: "Visualization 2",
       }
-    }
     }
   }
 
