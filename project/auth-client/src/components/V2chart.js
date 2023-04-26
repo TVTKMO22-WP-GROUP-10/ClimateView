@@ -19,11 +19,17 @@ const req3 = axios.get(Constants.API_ADDRESS + "/v2icecore3");
 const reqY = axios.get(Constants.API_ADDRESS + "/v2maunaloaAnnual");
 const reqM = axios.get(Constants.API_ADDRESS + "/v2maunaloaMonthly");
 
-const generatedYears = [];
-function generateData(daaaata) {
-  for (let i = 1000; i < 2023; i++)
-    generatedYears["year"] = i;
-}
+const sortedYears = [];
+
+// function parsingYears(arr){
+//   arr.forEach(data => {
+//     const year = data.year;
+//     if (!sortedYears.includes(year)) {
+//       sortedYears.push(year);
+//     }
+//   })
+// }
+
 
 export default function V2chart() {
 
@@ -34,10 +40,7 @@ export default function V2chart() {
   if (statusState === loading) {
     axios.all([req1, req2, req3, reqY, reqM]).then(axios.spread((...responses) => {
       console.log(responses[0].data);
-      //      console.log(responses[1].data);
-      //      console.log(responses[2].data);
-      //      console.log(responses[3].data);
-      //      console.log(responses[4].data);
+
 
       const icecore1 = responses[0].data;
       const icecore2 = responses[1].data;
@@ -45,27 +48,20 @@ export default function V2chart() {
       const maunaloaY = responses[3].data;
       //      const maunaloaM = responses[4].data;
 
-      generateData();
+      //parsingYears(icecore1);
+
       setStatusState({
-        //labels: icecore3.map(data => data.year),
+        //labels: labels,
         datasets: [
           {
-            // label: "Maunaloa Annual",
-            // data: maunaloaY.map(data => {
-            //   return {
-            //     year: data.year,
-            //     co2ppm: data.co2ppm
-            //   };
-            // })
             label: "Maunaloa Annual",
-            data: maunaloaY.map(data => ({
-              time: Date.fromObject({
-                year: data.year
-              }).getFullYear(),
-              co2ppm: data.co2ppm
-            }))
-            ,
-            parsing: {
+            data: maunaloaY.map(data => {
+              return {
+                year: data.year,
+                co2ppm: data.co2ppm
+              };
+            }),
+              parsing: {
               xAxisKey: "year",
               yAxisKey: "co2ppm"
             },
@@ -129,7 +125,7 @@ export default function V2chart() {
   }
   const options = {
     scales: {
-      x: {
+      year: {
         ticks: {
           stepSize: 1.0,
         },
