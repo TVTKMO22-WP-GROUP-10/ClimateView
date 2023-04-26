@@ -185,6 +185,14 @@ export default function V2chart() {
   return (
     <div>
       {showStatus}
+      <div>
+        <p>Antarctic ice core records of atmospheric C02 levels combined with atmospheric C02 measurement from Mauna Loa since 1958</p><br/>
+        <b>Dataset sources and descriptions:</b><br/>
+        <a href='https://cdiac.ess-dive.lbl.gov/trends/co2/lawdome.html'>Antarctic Ice Core records Description</a><br/>
+        <a href="https://cdiac.ess-dive.lbl.gov/ftp/trends/co2/lawdome.combined.dat">Antarctic Ice Core records Datasets </a><br/>
+        <a href='https://gml.noaa.gov/ccgg/about/co2_measurements.html'>Mauna Loa Atmospheric CO2 readings Description</a><br/>
+        <a href='https://gml.noaa.gov/ccgg/trends/data.html'>Mauna Loa Atmospheric CO2 readings datasets</a><br/>
+      </div>
     </div>
   );
 }
