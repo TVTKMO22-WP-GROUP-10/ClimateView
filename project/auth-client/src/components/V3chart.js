@@ -4,6 +4,7 @@ import axios from "axios";
 import React, {useState} from "react";
 import Constants from "../Constants.json"
 
+//rest api pyynnöt
 const req1 = axios.get(Constants.API_ADDRESS + "/temp");
 const req2 = axios.get(Constants.API_ADDRESS + "/co2");
 const req3 = axios.get(Constants.API_ADDRESS + "/activities");
@@ -95,6 +96,7 @@ export default function V3chart() {
                 text: "Visualization 3",
             },
             tooltip: {
+                //adds info on activity infopoints
                 callbacks: {
                     label: (context) => {
                         return context.raw.activities
@@ -119,7 +121,7 @@ export default function V3chart() {
 
     return (
         <div>
-            <div style={{ width: "1000px" }}>
+            <div style={{ width: "80%" }}>
                 {view}
             </div>
             <div>
