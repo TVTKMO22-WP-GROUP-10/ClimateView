@@ -17,6 +17,8 @@ function App() {
   const [pw, setPw] = useState("repe");
   const [userJwt, setUserJwt] = useState(localStorage.getItem('token'));
 
+  let username = localStorage.getItem('uname');
+
   /**
    * Sends creadentials in form data
    */
@@ -70,16 +72,34 @@ function App() {
       .catch(e => console.log(e.message))
   }
 
+  const deleteUser = (event) => {
+    event.preventDefault();
+
+    if (window.confirm("Are you sure, you want to delete user?")) {
+      axios.delete('http://localhost:8080/deleteuser/' + username)
+        .then(response => {
+          console.log("User is deleted", response.data);
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          window.alert("User is deleted, logging out.");
+          window.location.reload(true);
+        })
+        .catch(error => {
+          console.log("Not working", error)
+        })
+    }
+  }
+
   let authRoutes = <>
     <Route path="/createuser" element={<CreateUser />} />
     <Route path="/V4-V5" element={<V4V5 />} />
     <Route path="/V1-V3" element={<V1V3 />} />
-    <Route path="/login" element={<Login login={ (newJwt) => 
+    <Route path="/login" element={<Login login={(newJwt) =>
       setUserJwt(newJwt)
     } />} />
   </>
 
-  if(userJwt != null) {
+  if (userJwt != null) {
     authRoutes = <>
       <Route path="/Protected" element={<Protected />} />
       <Route path="/V4-V5" element={<V4V5 />} />
@@ -101,6 +121,7 @@ function App() {
                 localStorage.removeItem('uname');
                 window.location.reload(true);
               }}>Log out</button>
+              <button onClick={deleteUser}>Delete user</button>
 
             </>
             :
@@ -114,9 +135,9 @@ function App() {
           }
         </div>
         <Routes>
-          <Route path="/" element={<Home userLoggedIn= {userJwt != null} />} />
+          <Route path="/" element={<Home userLoggedIn={userJwt != null} />} />
           {authRoutes}
-          <Route path="*"element={<Home userLoggedIn= {userJwt != null} />} />
+          <Route path="*" element={<Home userLoggedIn={userJwt != null} />} />
         </Routes>
       </div>
     </BrowserRouter>
