@@ -98,6 +98,7 @@ function App() {
               <Link to="/V4-V5"><div>Visuals V4-V5</div></Link>
               <button onClick={() => {
                 localStorage.removeItem('token');
+                localStorage.removeItem('uname');
                 window.location.reload(true);
               }}>Log out</button>
 

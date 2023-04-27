@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 export default function Protected() {
+
+  const [userData, setUserData] = useState()
 
   const config = {
     headers: {
@@ -10,13 +12,21 @@ export default function Protected() {
     withCredentials: true
   }
 
-  axios.get('http://localhost:8080/private', config)
-    .then(response => console.log(response.data))
-    
-    .catch(e => console.log(e.message))
+  const loadData = async () => {
+    try {
+      const result = await axios.get('http://localhost:8080/private', config)
+      console.log(result);
+      setUserData(result.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
-      Here will be protected info for the User
+      <button onClick={loadData}>Click to load protected data for your user</button>
+      <p>{userData}</p>
     </div>
   )
 }
