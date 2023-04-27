@@ -12,6 +12,7 @@ export default function Protected() {
 
   axios.get('http://localhost:8080/private', config)
     .then(response => console.log(response.data))
+    
     .catch(e => console.log(e.message))
   return (
     <div>
