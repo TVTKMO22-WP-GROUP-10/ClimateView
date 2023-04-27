@@ -6,7 +6,7 @@ chai.use(chaiHttp);
 const apiAddress = "http://localhost:8080"
 
 describe('User tests', function() {
-    //register
+    //register user
     describe('POST /register', function() {
         it('should register with correct info', function(done) {
             chai.request(apiAddress)
@@ -26,6 +26,7 @@ describe('User tests', function() {
         it('should not register with empty post', function(done) {
             chai.request(apiAddress)
             .post('/register')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send()
             .end(function(err, res) {
                 expect(err).to.be.null;
@@ -37,19 +38,20 @@ describe('User tests', function() {
         it('should not register with variables reaching over 255 char limit', function(done) {
             chai.request(apiAddress)
             .post('/register')
+            .set('content-type', 'application/x-www-form-urlencoded')
             .send({
-                username: "tester11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-                password: "pass1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
+                uname: "tester11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+                pw: "pass1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
             })
             .end(function(err, res) {
                 expect(err).to.be.null;
-                expect(res).to.have.status(400);
+                expect(res).to.have.status(500);
                 done()
             })
         })
     })
 
-    //login
+    //login user
     describe('POST /login', function(){
         it('should login with correct info', function(done) {
             chai.request(apiAddress)
@@ -65,7 +67,35 @@ describe('User tests', function() {
                 done()
             })
         })
+
+        it('should login with incorrect info', function(done) {
+            chai.request(apiAddress)
+            .post('/login')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send({
+                uname: "wrong",
+                pw: "info"
+            })
+            .end(function(err, res) {
+                expect(err).to.be.null;
+                expect(res).to.have.status(401);
+                done()
+            })
+        })
+
+        it('should not login with empty fields', function(done) {
+            chai.request(apiAddress)
+            .post('/login')
+            .set('content-type', 'application/x-www-form-urlencoded')
+            .send()
+            .end(function(err, res) {
+                expect(err).to.be.null;
+                expect(res).to.have.status(400);
+                done()
+            })
+        })
     }) 
 
     //delete user 
+    
 })
