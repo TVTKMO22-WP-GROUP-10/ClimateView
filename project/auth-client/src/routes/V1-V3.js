@@ -1,5 +1,6 @@
 import React from "react";
 import V3chart from "../components/V3chart";
+import V2chart from "../components/V2chart";
 import V1chart from "../components/V1chart";
 
 export default function V1V3Graphs() {
@@ -9,7 +10,7 @@ export default function V1V3Graphs() {
                 <V1chart />
             </div>
             <div>
-                <h1>v2 tähän</h1>
+                <V2chart />
             </div>
             <div>
                 <V3chart />
