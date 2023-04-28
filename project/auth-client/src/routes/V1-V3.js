@@ -13,7 +13,7 @@ export default function V1V3Graphs() {
                 <V2chart />
             </div>
             <div>
-                {V3chart()}
+                <V3chart />
             </div>
         </div>
     );
