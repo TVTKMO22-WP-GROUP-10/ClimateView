@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Protected from "./Protected"
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+
 
 export default function Home(props) {
+
+  let usename = localStorage.getItem('uname');
+
   return (
     <div>
       <h1>Main page of the ClimateView project</h1>
@@ -14,10 +17,11 @@ export default function Home(props) {
       <div>
         User login status : {props.userLoggedIn ?
           <div>
-            Is logged in <br></br>
+            Logged in , welcome { usename } <br></br>
                 <Link to="/Protected">Go to protected view</Link>
           </div> 
           : "not logged in"}
+          
       </div>
     </div>
   )

@@ -18,5 +18,8 @@ public class UserService {
         return prepo.findAll();
     }
 
-    
+    public void deleteUser(String uname){
+        prepo.deleteById(uname);
+}
+
 }
