@@ -17,6 +17,7 @@ function App() {
   const [pw, setPw] = useState("repe");
   const [userJwt, setUserJwt] = useState(null);
 
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
   /**
    * Sends creadentials in form data
    */
@@ -74,12 +75,12 @@ function App() {
     <Route path="/createuser" element={<CreateUser />} />
     <Route path="/V4-V5" element={<V4V5 />} />
     <Route path="/V1-V3" element={<V1V3 />} />
-    <Route path="/login" element={<Login login={ (newJwt) => {
+    <Route path="/login" element={<Login login={(newJwt) => {
       setUserJwt(newJwt)
     }} />} />
   </>
 
-  if(userJwt != null) {
+  if (userJwt != null) {
     authRoutes = <>
       <Route path="/Protected" element={<Protected />} />
       <Route path="/V4-V5" element={<V4V5 />} />
@@ -90,27 +91,43 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <div className="navbar">
-          {userJwt != null ?
-            <>
-              <Link to="/"><div>Home</div></Link>
-              <Link to="/V1-V3"><div>Visuals V1-V3</div></Link>
-              <Link to="/V4-V5"><div>Visuals V4-V5</div></Link>
-            </>
-            :
-            <>
-              <Link to="/"><div>Home</div></Link>
-              <Link to="/V1-V3"><div>Visuals V1-V3</div></Link>
-              <Link to="/V4-V5"><div>Visuals V4-V5</div></Link>
-              <Link to="/createuser"><div>Create User</div></Link>
-              <Link to="/login"><div>Login</div></Link>
-            </>
-          }
-        </div>
+        <nav className="navbar">
+          <button className="hamburger" onClick={() => {setIsNavExpanded(!isNavExpanded)}}>
+            {/* icon from heroicons.com */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="white">
+              <path fillRule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          <div className={isNavExpanded ? "navmenu expanded" : "navmenu"}>
+            {userJwt != null ?
+              <>
+                <ul>
+                  <li><Link to="/"><div>Home</div></Link></li>
+                  <li><Link to="/V1-V3"><div>Visuals V1-V3</div></Link></li>
+                  <li><Link to="/V4-V5"><div>Visuals V4-V5</div></Link></li>
+                </ul>
+              </>
+              :
+              <>
+                <ul>
+                  <li><Link to="/"><div>Home</div></Link></li>
+                  <li><Link to="/V1-V3"><div>Visuals V1-V3</div></Link></li>
+                  <li><Link to="/V4-V5"><div>Visuals V4-V5</div></Link></li>
+                  <li><Link to="/createuser"><div>Create User</div></Link></li>
+                  <li><Link to="/login"><div>Login</div></Link></li>
+                </ul>
+
+              </>
+            }
+          </div>
+        </nav>
         <Routes>
-          <Route path="/" element={<Home userLoggedIn= {userJwt != null} />} />
+          <Route path="/" element={<Home userLoggedIn={userJwt != null} />} />
           {authRoutes}
-          <Route path="*"element={<Home userLoggedIn= {userJwt != null} />} />
+          <Route path="*" element={<Home userLoggedIn={userJwt != null} />} />
         </Routes>
       </div>
     </BrowserRouter>

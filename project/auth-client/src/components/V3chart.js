@@ -119,15 +119,15 @@ export default function V3chart() {
 
     return (
         <div>
-            <div style={{ width: "1000px" }}>
+            <div>
                 {view}
             </div>
             <div>
                 <p>Evolution of temperature and recorded co2 emissions over the span of ~2 million years, 
                     accompanied by select points of human activity</p>
-                <a href='https://climate.fas.harvard.edu/files/climate/files/snyder_2016.pdf'>Description for used temperature data</a>
-                <a href='http://carolynsnyder.com/papers/Snyder_Data_Figures.zip'>Dataset for used temperature data</a>
-                <a href="https://www.southampton.ac.uk/~cpd/history.html">Dataset for used human activity data</a>
+                <a href='https://climate.fas.harvard.edu/files/climate/files/snyder_2016.pdf'>Description for used temperature data</a><br/>
+                <a href='http://carolynsnyder.com/papers/Snyder_Data_Figures.zip'>Dataset for used temperature data</a><br/>
+                <a href="https://www.southampton.ac.uk/~cpd/history.html">Dataset for used human activity data</a><br/>
             </div>
         </div>
     );
