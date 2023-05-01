@@ -54,7 +54,7 @@ export default function LoginView(props) {
     }
 
   return (
-    <div>
+    <div className='page-texts'>
       <h1> Login here</h1>
       <form onSubmit={handleLoginSubmit}>
         <div>
@@ -63,7 +63,7 @@ export default function LoginView(props) {
         </div>
         <div>
           Password <br />
-          <input type="text" name="password"></input>
+          <input type="password" name="password"></input>
         </div>
         <div>
           {loginUIControls}

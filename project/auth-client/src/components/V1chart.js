@@ -123,10 +123,6 @@ export default function FirstView() {
       legend: {
         position: "top",
       },
-      title: {
-        display: true,
-        text: "Visualization 1",
-      },
     },
       };
 

@@ -52,8 +52,8 @@ export default function CreateUserView() {
     }
 
     return (
-        <div>
-            <h2>Sign up</h2>
+        <div className='page-texts'>
+            <h1>Sign up</h1>
             <form onSubmit={handleSignUpSubmit}>
                 <div>
                     User name <br />

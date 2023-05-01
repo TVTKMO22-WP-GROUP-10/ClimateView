@@ -6,13 +6,13 @@ import V1chart from "../components/V1chart";
 export default function V1V3Graphs() {
     return (
         <div>
-            <div className="vchart">
+            <div>
                 <V1chart />
             </div>
-            <div className="vchart">
+            <div>
                 <V2chart />
             </div>
-            <div className="vchart">
+            <div>
                 <V3chart />
             </div>
         </div>

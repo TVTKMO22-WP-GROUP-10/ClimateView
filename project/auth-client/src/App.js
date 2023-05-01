@@ -97,7 +97,7 @@ function App() {
     <Route path="/V1-V3" element={<V1V3 />} />
     <Route path="/login" element={<Login login={(newJwt) => {
       setUserJwt(newJwt)
-    } }/>} />
+    }} />} />
   </>
 
   if (userJwt != null) {
@@ -112,7 +112,7 @@ function App() {
     <BrowserRouter>
       <div>
         <nav className="navbar">
-          <button className="hamburger" onClick={() => {setIsNavExpanded(!isNavExpanded)}}>
+          <button className="hamburger" onClick={() => { setIsNavExpanded(!isNavExpanded) }}>
             {/* icon from heroicons.com */}
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="white">
               <path fillRule="evenodd"
@@ -129,11 +129,11 @@ function App() {
                   <li><Link to="/V1-V3"><div>Visuals V1-V3</div></Link></li>
                   <li><Link to="/V4-V5"><div>Visuals V4-V5</div></Link></li>
                   <button onClick={() => {
-                localStorage.removeItem('token');
-                localStorage.removeItem('uname');
-                window.location.reload(true);
-              }}>Log out</button>
-              <button onClick={deleteUser}>Delete user</button>
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('uname');
+                    window.location.reload(true);
+                  }}>Log out</button>
+                  <button onClick={deleteUser}>Delete user</button>
                 </ul>
               </>
               :

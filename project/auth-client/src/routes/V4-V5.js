@@ -5,11 +5,11 @@ import V4chart from "../components/V4chart"
 export default function V4V5Graphs() {
     return (
         <div>
-            <div className="vchart">
+            <div>
                 {V4chart()}
             </div>
             
-            <div className="vchart">
+            <div>
                 <V5chart />
             </div>
         </div>

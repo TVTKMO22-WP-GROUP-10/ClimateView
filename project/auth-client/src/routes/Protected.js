@@ -24,7 +24,7 @@ export default function Protected() {
   }
 
   return (
-    <div>
+    <div className ='page-texts'>
       <button onClick={loadData}>Click to load protected data for your user</button>
       <p>{userData}</p>
     </div>
