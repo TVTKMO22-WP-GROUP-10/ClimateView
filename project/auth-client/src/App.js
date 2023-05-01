@@ -97,7 +97,7 @@ function App() {
     <Route path="/V1-V3" element={<V1V3 />} />
     <Route path="/login" element={<Login login={(newJwt) => {
       setUserJwt(newJwt)
-    } />} />
+    } }/>} />
   </>
 
   if (userJwt != null) {
