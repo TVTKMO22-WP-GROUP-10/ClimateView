@@ -126,7 +126,7 @@ switch (statusState) {
 
     return (
         <div>
-            <div style={{ width: "80%" }}>
+            <div>
                 {view}
             </div>
             <div>
