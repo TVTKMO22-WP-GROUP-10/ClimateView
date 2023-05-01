@@ -20,7 +20,7 @@ export default function Home(props) {
            <b>Logged in , welcome { usename }</b>  <br></br> <br></br>
                 <Link to="/Protected">Go to protected view</Link>
           </div> 
-          : "not logged in"}
+          : <b>not logged in</b>}
           
       </div>
     </div>
