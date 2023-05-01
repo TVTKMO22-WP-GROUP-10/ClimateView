@@ -232,19 +232,24 @@ export default function TestV5Chart() {
   }
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
-      <div style={{ flex: "1 1 400px", display: "flex", alignItems: "stretch" }}>
-        <div style={{ flex: 1 }}>
-          <Doughnut data={data1} options={options1}
-            onClick={onClick}
-            ref={chartRef} />
-        </div>
-        <div style={{ flex: 1 }}>
-          {view}
-        </div>
+    <div>
+    <div style={{ borderTop: "2px solid #000 ", margin: "50px 100px" }}></div>
+    <div className="doughnut-chart">
+      <div className="chart-texts">
+        <b>Visualization 5</b>
+        <p>Annual global CO2 emissions by sectors. Click on a sector to open a detailed subsection</p>
+      </div>
+      <Doughnut data={data1} options={options1}
+        onClick={onClick}
+        ref={chartRef} />
+      {view}
+      <div className="chart-texts">
+        <b>Dataset sources and descriptions:</b><br />
+        <a href='https://ourworldindata.org/emissions-by-sector#co2-emissions-by-sector'>CO2 emissions by sectors description</a><br />
+        <a href='https://ourworldindata.org/uploads/2020/09/Global-GHG-Emissions-by-sector-based-on-WRI-2020.xlsx'>CO2 emissions by sectors dataset</a>
       </div>
     </div>
-
+  </div>
 
   )
 

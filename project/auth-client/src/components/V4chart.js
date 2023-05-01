@@ -125,15 +125,16 @@ switch (statusState) {
 }
 
     return (
-        <div>
-            <div>
-                {view}
-            </div>
-            <div>
+        <div >
+        <div className="line-chart">
+            {view}
+            <div className="chart-texts">
                 <p>Co2 emissions of selected countries over the period of ~60 years.</p>
-                <a href='https://www.icos-cp.eu/science-and-impact/global-carbon-budget/2021'>Description</a>
+                <a href='https://www.icos-cp.eu/science-and-impact/global-carbon-budget/2021'>Description </a>
                 <a href='https://data.icos-cp.eu/licence_accept?ids=%5B%22lApekzcmd4DRC34oGXQqOxbJ%22%5D'>Dataset</a>
             </div>
         </div>
+
+    </div>
     );
 }

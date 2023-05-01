@@ -121,17 +121,18 @@ export default function V3chart() {
 
     return (
         <div>
-
-            <div>
-                {view}
-            </div>
-            <div>
-                <p>Evolution of temperature and recorded co2 emissions over the span of ~2 million years, 
+        <div style={{ borderTop: "2px solid #000 ", margin: "50px 100px" }}></div>
+        <div className="line-chart">
+            {view}
+            <div className="chart-texts">
+                <p>Evolution of temperature and recorded co2 emissions over the span of ~2 million years,
                     accompanied by select points of human activity</p>
-                <a href='https://climate.fas.harvard.edu/files/climate/files/snyder_2016.pdf'>Description for used temperature data</a><br/>
-                <a href='http://carolynsnyder.com/papers/Snyder_Data_Figures.zip'>Dataset for used temperature data</a><br/>
-                <a href="https://www.southampton.ac.uk/~cpd/history.html">Dataset for used human activity data</a><br/>
+                <a href='https://climate.fas.harvard.edu/files/climate/files/snyder_2016.pdf'>Description for used temperature data</a>
+                <a href='http://carolynsnyder.com/papers/Snyder_Data_Figures.zip'>Dataset for used temperature data</a>
+                <a href="https://www.southampton.ac.uk/~cpd/history.html">Dataset for used human activity data</a>
             </div>
         </div>
+
+    </div>
     );
 }

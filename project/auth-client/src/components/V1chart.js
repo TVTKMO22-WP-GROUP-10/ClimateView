@@ -211,22 +211,35 @@ let view = null;
       }
 
   return (
-
     <div>
-        <h1 style={{ fontSize: 15 }}>Select dataset for visualization 1:</h1>
-      <label>
-        <input type="radio" value="option1" checked={chartState === "option1"} onChange={handleOptionChange} />
-        Show  yearly data
-      </label>
-      <label>
-        <input type="radio" value="option2" checked={chartState === "option2"} onChange={handleOptionChange} />
-        Show monthly data
-      </label>
-      <label>
-        <input type="radio" value="option3" checked={chartState === "option3"} onChange={handleOptionChange} />
-        Show reconstruction data
-      </label>
+    <div className="line-chart">
+      <div className="chart-texts">
+        <b>Visualization 1</b>
+        <p>Global historical surface temperature anomalies from January 1850 onwards. Different datasets for yearly and monthly data. </p>
+        <p>Select third dataset for Northern Hemisphere 2,000-year temperature reconstruction. </p>
+        <b>Select dataset:</b><br />
+        <label>
+          <input type="radio" value="option1" checked={chartState === "option1"} onChange={handleOptionChange} />
+          Show  yearly data
+        </label>
+        <label>
+          <input type="radio" value="option2" checked={chartState === "option2"} onChange={handleOptionChange} />
+          Show monthly data
+        </label>
+        <label>
+          <input type="radio" value="option3" checked={chartState === "option3"} onChange={handleOptionChange} />
+          Show reconstruction data
+        </label>
+      </div>
       {view}
+      <div className="chart-texts">
+        <b>Dataset sources and descriptions:</b><br />
+        <a href='https://www.metoffice.gov.uk/hadobs/hadcrut5/'>Temperature anomalies datasets and description</a><br />
+        <a href="https://bolin.su.se/data/moberg-2012-nh-1?n=moberg-2005">2000 year temperature reconstruction description </a><br />
+        <a href="https://www.ncei.noaa.gov/pub/data/paleo/contributions_by_author/moberg2005/nhtemp-moberg2005.txt">2000 year temperature reconstruction dataset </a><br />
+      </div>
     </div>
+  </div>
+
     );
   }
