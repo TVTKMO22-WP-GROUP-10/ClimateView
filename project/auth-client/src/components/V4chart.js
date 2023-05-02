@@ -104,12 +104,10 @@ const options = {
         legend: {
             position: "top",
         },
-        title: {
-            display: true,
-            text: "Visualization 4",
+        
         },
-    },
-};
+    }
+
 
 let view = null
 
@@ -125,15 +123,20 @@ switch (statusState) {
 }
 
     return (
-        <div>
-            <div style={{ width: "80%" }}>
-                {view}
-            </div>
-            <div>
+        <div >
+        <div className="line-chart">
+            <div className="chart-texts">
+                <b>Visualization 4</b>
                 <p>Co2 emissions of selected countries over the period of ~60 years.</p>
-                <a href='https://www.icos-cp.eu/science-and-impact/global-carbon-budget/2021'>Description</a>
+            </div>
+            {view}
+            <div className="chart-texts">
+            <b>Dataset sources and descriptions:</b><br />
+                <a href='https://www.icos-cp.eu/science-and-impact/global-carbon-budget/2021'>Description </a>
                 <a href='https://data.icos-cp.eu/licence_accept?ids=%5B%22lApekzcmd4DRC34oGXQqOxbJ%22%5D'>Dataset</a>
             </div>
         </div>
+
+    </div>
     );
 }

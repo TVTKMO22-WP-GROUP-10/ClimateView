@@ -8,19 +8,19 @@ export default function Home(props) {
   let usename = localStorage.getItem('uname');
 
   return (
-    <div>
+    <div className='page-texts'>
       <h1>Main page of the ClimateView project</h1>
       <p>
         Here will be some info about the project.
       </p>
 
       <div>
-        User login status : {props.userLoggedIn ?
+        User login status  : <br></br>{props.userLoggedIn ?
           <div>
-            Logged in , welcome { usename } <br></br>
+           <b>Logged in , welcome { usename }</b>  <br></br> <br></br>
                 <Link to="/Protected">Go to protected view</Link>
           </div> 
-          : "not logged in"}
+          : <b>not logged in</b>}
           
       </div>
     </div>
