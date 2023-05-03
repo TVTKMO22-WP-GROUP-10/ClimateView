@@ -134,12 +134,7 @@ export default function TestV5Chart() {
     plugins: {
       title: {
         align: "center",
-        display: true,
-        text: [
-          "Visalization 5, emissions by sector:",
-          "Click on a section to open subsection"
-
-        ]
+        
       }
     }
   };
@@ -237,7 +232,7 @@ export default function TestV5Chart() {
     <div className="doughnut-chart">
       <div className="chart-texts">
         <b>Visualization 5</b>
-        <p>Annual global CO2 emissions by sectors. Click on a sector to open a detailed subsection</p>
+        <p>Annual global CO2 emissions by sectors. Click on a sector to open a detailed subsection:</p>
       </div>
       <Doughnut data={data1} options={options1}
         onClick={onClick}
