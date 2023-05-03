@@ -4,6 +4,9 @@
 ClimateView on Oulun Ammattikorkeakoulun toisen vuoden tieto- ja viestintätekniikan insinööriopiskelijoiden toteuttama projekti, jonka tarkoituksena oli tehdä ulkopuolisista lähteistä saadun datan visualisointiin tarkoitettu web-sovellus. Sovelluksessa käyttäjällä on lisäksi mahdollisuus luoda ja hallinnoida omaa tiliään. 
 Sovellus toimii ja on tarkasteltavana (päivä) asti (palvelussa) osoitteessa: (osoite), minkä jälkeen sen käyttöönotto on mahdollista asentamalla se manuaalisesti koneelle. 
 
+![My Image](/project/auth-client/readme_images/mainpage.jpg)</br>
+Kuva 1: Ylävalikko ja sivun päänäkymä
+
 ## Vastuualueet
 
 Hannu Karjalainen: Kaaviot 1 ja 5 , react sivuston perusnäkymät , käyttäjän luominen & poistaminen, login. </br>
@@ -14,9 +17,19 @@ Jarkko Makkonen: Kaaviot 3 ja 4 sekä sovelluksen testaus.
 
 Sovellus esittää kahdelle eri sivulle jaettuna yhteensä viisi eri kaaviota. Jokainen kaavio pitää sisällään interaktiivisen ominaisuuden. Esimerkiksi ensimmäisessä kaaviossa (V1) on napeista vaihdettavat datasetit ja kolmannessa (V3) infopisteet. Kaavioiden alla on linkit datalähteisiin ja niiden kuvauksiin. Sovellukseen on myös toteutettu oman käyttäjän luominen, tunnuksilla kirjautuminen sekä käyttäjän poistaminen. Kirjautumisen jälkeen etusivun näkymä muuttuu siten, että yläpalkista poistuu sisäänkirjautumisvaihtoehdot ja tilalle tulee napit ”Log out” ja ”Delete User”, sekä kirjautuneen käyttäjän tunnus näkyy etusivulla.
 
+![My Image](/project/auth-client/readme_images/create_user.jpg)
+![My Image](/project/auth-client/readme_images/login.jpg)</br>
+
+Kuva 2: Käyttäjän luominen   &ensp; &ensp; &ensp;   Kuva 3: Sivustolle kirjautuminen
+
+
+
 Sovelluksessa on käytetty MySql-tietokantaohjelmistoa datan tallentamiseen, käsittelyyn ja hyödyntämiseen. Tietokantaan on luotu jokaisen kaavion datalle oma taulukko, joka sisältää kaiken siihen liittyvän mittausdatan. 
 Selainpuoli sovelluksesta on toteutettu JavaScriptillä React-kirjastoja hyödyntäen. Sovellus toimii Reactin ansiosta yhden sivun applikaationa ja tukee eri näyttökokoja. Ylävalikko muokkautuu pudotusvalikoksi mikäli sovellusta selaa mobiililaitteella.
 REST API -rajapinta on kirjoitettu Javalla Spring Boot- sovelluskehystä hyödyntäen. Jokaiselle kaaviolle ja niiden tarvitsemalle datalle on luotu rajapinnassa omat oliot sekä niihin liittyvät CRUD-operaatiot. CRUD operaatiota käyttäen selainpuoli saa käyttöönsä visualisoinneissa sekä käyttäjien hallinnoimisessa hyödynnettävän informaation.
+
+![My Image](/project/auth-client/readme_images/visualization1_image.jpg)</br>
+Kuva 4: Kaavio 1
 
 ## Sovelluksen käyttöönotto
 
