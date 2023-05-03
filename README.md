@@ -9,9 +9,9 @@ Kuva 1: Ylävalikko ja sivun päänäkymä
 
 ## Vastuualueet
 
-Hannu Karjalainen: Kaaviot 1 ja 5 , react sivuston perusnäkymät , käyttäjän luominen & poistaminen, login. </br>
-Kevin Kipinä: Kaavio 2 sekä sivuston reaktiivisuus mobiililaitteille. Sovelluksen julkaisu pilvipalvelualustalle.</br>
-Jarkko Makkonen: Kaaviot 3 ja 4 sekä sovelluksen testaus.
+**Hannu Karjalainen:** Kaaviot 1 ja 5 , react sivuston perusnäkymät , käyttäjän luominen & poistaminen, login. </br>
+**Kevin Kipinä:** Kaavio 2 sekä sivuston reaktiivisuus mobiililaitteille. Sovelluksen julkaisu pilvipalvelualustalle.</br>
+**Jarkko Makkonen:** Kaaviot 3 ja 4 sekä sovelluksen testaus.
 
 ## Toteutus
 
@@ -44,8 +44,9 @@ Kuva 4: Kaavio 1
 
 ## Projektin dokumentaatio
 
-Database diagram: </br>
-https://lucid.app/documents/view/fb851351-0fae-4817-9272-c3815e5fc33a
+<img src="/project/auth-client/readme_images/database_diagram.jpg" alt="Tietokannan ER-kaavio" title="Tietokannan ER-kaavio" width="70%" ></br>
+Kuva 5: Tietokannan ER-kaavio
+
 
 Käyttöliittymän mallit:<br/>
 https://wireframe.cc/c8yK1i <br/>
