@@ -1,7 +1,7 @@
 # ClimateView - Ilmastonmuutoksen datan visualisointiprojekti
 ## Esittely
 
-ClimateView on Oulun Ammattikorkeakoulun toisen vuoden tieto- ja viestintätekniikan insinööriopiskelijoiden toteuttama projekti, jonka tarkoituksena oli tehdä ulkopuolisista lähteistä saadun datan visualisointiin tarkoitettu web-sovellus. Sovelluksessa käyttäjällä on lisäksi mahdollisuus luoda ja hallinnoida omaa tiliään. 
+ClimateView on Oulun Ammattikorkeakoulun toisen vuoden tieto- ja viestintätekniikan insinööriopiskelijoiden toteuttama projekti, jonka tarkoituksena oli tehdä ulkopuolisista lähteistä saadun ilmastonmuutosdatan visualisointiin tarkoitettu web-sovellus. Sovelluksessa käyttäjällä on lisäksi mahdollisuus luoda ja hallinnoida omaa tiliään. 
 Sovellus toimii ja on tarkasteltavana (päivä) asti (palvelussa) osoitteessa: (osoite), minkä jälkeen sen käyttöönotto on mahdollista asentamalla se manuaalisesti koneelle. 
 
 ![My Image](/project/auth-client/readme_images/mainpage.jpg)</br>
