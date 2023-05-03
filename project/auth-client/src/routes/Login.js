@@ -40,7 +40,7 @@ export default function LoginView(props) {
     
     switch (loginState) {
       case "idle":
-        loginUIControls = <button type="submit">Login</button>
+        loginUIControls = <button className="form-button" type="submit">Login</button>
         break;
       case "processing":
         loginUIControls = <span style={{ color: "blue" }}> Processing...</span>
@@ -55,7 +55,7 @@ export default function LoginView(props) {
 
   return (
     <div className='page-texts'>
-      <h1> Login here</h1>
+      <h1> Login</h1>
       <form onSubmit={handleLoginSubmit}>
         <div>
           Username <br />
@@ -66,6 +66,7 @@ export default function LoginView(props) {
           <input type="password" name="password"></input>
         </div>
         <div>
+        <br></br>
           {loginUIControls}
         </div>
       </form>

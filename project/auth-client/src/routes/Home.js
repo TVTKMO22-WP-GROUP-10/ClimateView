@@ -9,19 +9,18 @@ export default function Home(props) {
 
   return (
     <div className='page-texts'>
-      <h1>Main page of the ClimateView project</h1>
+      <h1>Welcome to the ClimateView project</h1>
       <p>
-        Here will be some info about the project.
+        This website is made for visualizing climate change data over a long period of time.<br></br><br></br>
+        You can find different charts that show data about temperature changes<br></br> and CO2 levels over time on the pages "Visuals V1-V3" and "Visuals V4-V5".<br></br>
       </p>
-
       <div>
         User login status  : <br></br>{props.userLoggedIn ?
           <div>
-           <b>Logged in , welcome { usename }</b>  <br></br> <br></br>
+           <b>Logged in , welcome { usename }</b>  <br></br><br></br>
                 <Link to="/Protected">Go to protected view</Link>
           </div> 
-          : <b>not logged in</b>}
-          
+          : <b>not logged in.</b>}
       </div>
     </div>
   )

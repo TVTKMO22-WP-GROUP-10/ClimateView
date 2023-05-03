@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .navbar {
     height: 60px;
     width: 100%;
@@ -17,17 +23,27 @@
 }
 
 .navbar button {
-    box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+    box-shadow: 0px 0px 2px 2px rgb(107, 106, 106);
      top:50%;
-     background-color:#6d6d8a;
+     background-color:#a0a0b1;
      padding: 0.3 rem;
      color: #fff;
      border:none;
      border-radius:10px;
-     font-family: 'Roboto', sans-serif;
      margin-right: 15px;
+     font-size: large;
 }
 
+.form-button {
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+     top:50%;
+     background-color:#a0a0b1;
+     padding: 0.3 rem;
+     color: #fff;
+     border:none;
+     border-radius:10px;
+     font-size: x-large;
+}
 .navbar button:hover {
     background-color: #8e8ea1;
 }
@@ -62,7 +78,6 @@
     background-color: black;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-
     position: absolute;
     top: 50%;
     right: 25px;
@@ -130,7 +145,7 @@
 }
 
 .chart-texts {
-    font-family: 'Roboto', sans-serif;
+  
     text-align: center;
 }
 
@@ -146,9 +161,8 @@
   }
 
   /* other pages  */
-
+  
   .page-texts {
-    font-family: 'Roboto', sans-serif;
     text-align: center;
   }
 
