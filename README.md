@@ -9,8 +9,8 @@ Kuva 1: Ylävalikko ja sivun päänäkymä
 
 ## Vastuualueet
 
-**Hannu Karjalainen:** Kaaviot 1 ja 5 , react sivuston perusnäkymät , käyttäjän luominen & poistaminen, login. </br>
-**Kevin Kipinä:** Kaavio 2 sekä sivuston reaktiivisuus mobiililaitteille. Sovelluksen julkaisu pilvipalvelualustalle.</br>
+**Hannu Karjalainen:** Kaaviot 1 ja 5 , react sivuston perusnäkymät , käyttäjän luominen & poistaminen, login. Sivuston ulkoasun muokkaus.</br>
+**Kevin Kipinä:** Kaavio 2 sekä sivuston reaktiivisuus mobiililaitteille. Sovelluksen julkaisu pilvipalvelualustalle. Sivuston ulkoasun muokkaus.</br>
 **Jarkko Makkonen:** Kaaviot 3 ja 4 sekä sovelluksen testaus.
 
 ## Toteutus
@@ -32,10 +32,10 @@ REST API -rajapinta on kirjoitettu Javalla Spring Boot- sovelluskehystä hyödyn
 Kuva 4: Kaavio 1
 
 ![My Image](/project/auth-client/readme_images/visualization3_image.jpg)</br>
-Kuva 6: Kaavio 3 ja sen infopisteitä
+Kuva 5: Kaavio 3 ja sen infopisteitä
 
 ![My Image](/project/auth-client/readme_images/visualization4_image.jpg)</br>
-Kuva 7: Kaavio 4
+Kuva 6: Kaavio 4
 
 ## Sovelluksen käyttöönotto
 
@@ -46,18 +46,16 @@ Kuva 7: Kaavio 4
 
 ## Esittelyvideo
 
---Linkki tähän--
+ [Linkki esittelyvideoon](https://youtu.be/kqXgJjMSbR4)
 
 ## Projektin dokumentaatio
 
+ [Linkki rajapinta-dokumentaatioon](https://r10webprojekti.stoplight.io/docs/r10webprojekti/branches/main/gfvrrghn8fkbi-webprojektiapi)</br>
+ [Linkki tietokannan ER-kaavioon](https://lucid.app/lucidchart/fb851351-0fae-4817-9272-c3815e5fc33a/view?invitationId=inv_f25dd273-f96e-4956-a7af-c7f544f27e6d&page=0_0#)
+
 <img src="/project/auth-client/readme_images/database_diagram.jpg" alt="Tietokannan ER-kaavio" title="Tietokannan ER-kaavio" width="70%" ></br>
-Kuva 9: Tietokannan ER-kaavio
+Kuva 7: Tietokannan ER-kaavio
 
-
-Käyttöliittymän mallit:<br/>
-https://wireframe.cc/c8yK1i <br/>
-https://wireframe.cc/cUrOqt <br/>
-https://wireframe.cc/wkCQDa <br/>
 
 ## Projektiryhmän jäsenet
 
