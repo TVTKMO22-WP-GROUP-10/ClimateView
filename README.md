@@ -42,7 +42,8 @@ Kuva 6: Kaavio 4
 1. Kloonaa repo omalle koneelle komennolla ```git clone https://github.com/TVTKMO22-WP-GROUP-10/ClimateView.git```</br>
 2. Aseta ” ./main/resources/application.properties” -tiedostoon oman mySQL-tietokannan osoite, portti, käyttäjänimi ja mahdollinen salasana tietokantayhteyden muodostamiseksi.</br>
 3.  Tietokanta saadaan täydennettyä oikealla datalla ajamalla omalle koneelle viimeisin .sql-päätteinen tietokantadumppi rawdata-kansiosta.</br>
-4. Reactin riippuuvuuksien asennus onnistuu ajamalla komento ```npm install``` kansiossa ”auth-client”. Kun ```npm install``` on tehnyt taikansa, on sovelluksen frontend käyttövalmiina ajamalla komento ```npm start```.
+4. Reactin riippuuvuuksien asennus onnistuu ajamalla komento ```npm install``` kansiossa ”auth-client”. Kun ```npm install``` on tehnyt taikansa, on sovelluksen frontend käyttövalmiina ajamalla komento ```npm start```.</br>
+5. Sovelluksen backendin, eli Spring Bootin, käynnistäminen onnistuu ajamalla ”AuthApplications.java”, sekä tietokantasovelluksen käynnistämisellä. 
 
 ## Esittelyvideo
 
