@@ -2,7 +2,7 @@
 ## Esittely
 
 ClimateView on Oulun Ammattikorkeakoulun toisen vuoden tieto- ja viestintätekniikan insinööriopiskelijoiden toteuttama projekti, jonka tarkoituksena oli tehdä ulkopuolisista lähteistä saadun ilmastonmuutosdatan visualisointiin tarkoitettu web-sovellus. Sovelluksessa käyttäjällä on lisäksi mahdollisuus luoda ja hallinnoida omaa tiliään. 
-Sovellus toimii ja on tarkasteltavana (päivä) asti (palvelussa) osoitteessa: (osoite), minkä jälkeen sen käyttöönotto on mahdollista asentamalla se manuaalisesti koneelle. 
+Sovelluksen käyttöönotto on mahdollista asentamalla se manuaalisesti koneelle, tähän ohjeet alempana. 
 
 ![My Image](/project/auth-client/readme_images/mainpage.jpg)</br>
 Kuva 1: Ylävalikko ja sivun päänäkymä
@@ -10,12 +10,14 @@ Kuva 1: Ylävalikko ja sivun päänäkymä
 ## Vastuualueet
 
 **Hannu Karjalainen:** Kaaviot 1 ja 5 , react sivuston perusnäkymät , käyttäjän luominen & poistaminen, login. Sivuston ulkoasun muokkaus.</br>
-**Kevin Kipinä:** Kaavio 2 sekä sivuston reaktiivisuus mobiililaitteille. Sovelluksen julkaisu pilvipalvelualustalle. Sivuston ulkoasun muokkaus.</br>
+**Kevin Kipinä:** Kaavio 2 sekä sivuston reaktiivisuus mobiililaitteille. Sivuston ulkoasun muokkaus.</br>
 **Jarkko Makkonen:** Kaaviot 3 ja 4 sekä sovelluksen testaus.
+
+Lisäksi jokainen muokkasi vastuullaan oleviin kaavioihin liittyvän datan oikeaan muotoon, ja niiden tallentamisen tietokantaan.
 
 ## Toteutus
 
-Sovellus esittää kahdelle eri sivulle jaettuna yhteensä viisi eri kaaviota. Jokainen kaavio pitää sisällään interaktiivisen ominaisuuden. Esimerkiksi ensimmäisessä kaaviossa (V1) on napeista vaihdettavat datasetit ja kolmannessa (V3) infopisteet. Kaavioiden alla on linkit datalähteisiin ja niiden kuvauksiin. Sovellukseen on myös toteutettu oman käyttäjän luominen, tunnuksilla kirjautuminen sekä käyttäjän poistaminen. Kirjautumisen jälkeen etusivun näkymä muuttuu siten, että yläpalkista poistuu sisäänkirjautumisvaihtoehdot ja tilalle tulee napit ”Log out” ja ”Delete User”, sekä kirjautuneen käyttäjän tunnus näkyy etusivulla.
+Sovellus esittää kahdelle eri sivulle jaettuna yhteensä viisi eri kaaviota. Jokainen kaavio sisältää dataa eri lähteistä sekä interaktiivisen ominaisuuden. Esimerkiksi ensimmäisessä kaaviossa (V1) on napeista vaihdettavat datasetit ja kolmannessa (V3) infopisteet. Kaavioiden alla on linkit datalähteisiin ja niiden kuvauksiin. Sovellukseen on myös toteutettu oman käyttäjän luominen, tunnuksilla kirjautuminen sekä käyttäjän poistaminen. Kirjautumisen jälkeen etusivun näkymä muuttuu siten, että yläpalkista poistuu käyttäjän luominen ja kirjautuminen, ja niiden tilalle tulee napit ”Log out” ja ”Delete User”, sekä kirjautuneen käyttäjän tunnus näkyy etusivulla.
 
 ![My Image](/project/auth-client/readme_images/create_user.jpg)
 ![My Image](/project/auth-client/readme_images/login.jpg)</br>
@@ -28,7 +30,7 @@ Sovelluksessa on käytetty MySql-tietokantaohjelmistoa datan tallentamiseen, kä
 Selainpuoli sovelluksesta on toteutettu JavaScriptillä React-kirjastoja hyödyntäen. Sovellus toimii Reactin ansiosta yhden sivun applikaationa ja tukee eri näyttökokoja. Ylävalikko muokkautuu pudotusvalikoksi mikäli sovellusta selaa mobiililaitteella.
 REST API -rajapinta on kirjoitettu Javalla Spring Boot- sovelluskehystä hyödyntäen. Jokaiselle kaaviolle ja niiden tarvitsemalle datalle on luotu rajapinnassa omat oliot sekä niihin liittyvät CRUD-operaatiot. CRUD operaatiota käyttäen selainpuoli saa käyttöönsä visualisoinneissa sekä käyttäjien hallinnoimisessa hyödynnettävän informaation.
 
-![My Image](/project/auth-client/readme_images/visualization1_image.jpg)</br>
+<img src="/project/auth-client/readme_images/visualization1_image.jpg" alt="Kaavio 1" title="Kaavio 1" width="93%" ></br>
 Kuva 4: Kaavio 1
 
 ![My Image](/project/auth-client/readme_images/visualization3_image.jpg)</br>
