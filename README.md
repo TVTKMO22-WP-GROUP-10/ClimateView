@@ -51,7 +51,7 @@ Kuva 7: Kaavio 4
 ## Projektin dokumentaatio
 
 <img src="/project/auth-client/readme_images/database_diagram.jpg" alt="Tietokannan ER-kaavio" title="Tietokannan ER-kaavio" width="70%" ></br>
-Kuva 5: Tietokannan ER-kaavio
+Kuva 9: Tietokannan ER-kaavio
 
 
 Käyttöliittymän mallit:<br/>
