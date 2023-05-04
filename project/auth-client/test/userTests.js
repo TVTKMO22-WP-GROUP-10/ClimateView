@@ -97,5 +97,15 @@ describe('User tests', function() {
     }) 
 
     //delete user 
-    
+    describe('DELETE /deleteuser/:uname', function(){
+        it('should delete existing user', function(done) {
+            chai.request(apiAddress)
+            .delete('/deleteuser/tester')
+            .end(function(err, res){
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                done()
+            })
+        })
+    })
 })

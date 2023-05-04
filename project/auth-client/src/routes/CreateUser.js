@@ -35,7 +35,7 @@ export default function CreateUserView() {
     let signUpUIControls = null;
     switch (signUpProcessState) {
         case "idle":
-            signUpUIControls = <button type="submit">Sign up</button>
+            signUpUIControls = <button className='form-button' type="submit">Create User</button>
             break;
 
         case "processing":
@@ -53,7 +53,7 @@ export default function CreateUserView() {
 
     return (
         <div className='page-texts'>
-            <h1>Sign up</h1>
+            <h1>Create User</h1>
             <form onSubmit={handleSignUpSubmit}>
                 <div>
                     User name <br />
@@ -64,6 +64,7 @@ export default function CreateUserView() {
                     <input type="password" name="password" />
                 </div>
                 <div>
+                    <br></br>
                     {signUpUIControls}
                 </div>
             </form>
