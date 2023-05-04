@@ -31,6 +31,12 @@ REST API -rajapinta on kirjoitettu Javalla Spring Boot- sovelluskehystä hyödyn
 ![My Image](/project/auth-client/readme_images/visualization1_image.jpg)</br>
 Kuva 4: Kaavio 1
 
+![My Image](/project/auth-client/readme_images/visualization2_image.jpg)</br>
+Kuva 6: Kaavio 3 ja sen infopisteitä
+
+![My Image](/project/auth-client/readme_images/visualization1_image.jpg)</br>
+Kuva 7: Kaavio 4
+
 ## Sovelluksen käyttöönotto
 
 1. Kloonaa repo omalle koneelle komennolla ```git clone https://github.com/TVTKMO22-WP-GROUP-10/ClimateView.git```</br>
@@ -52,7 +58,6 @@ Käyttöliittymän mallit:<br/>
 https://wireframe.cc/c8yK1i <br/>
 https://wireframe.cc/cUrOqt <br/>
 https://wireframe.cc/wkCQDa <br/>
-https://wireframe.cc/vPlvJR <br/>
 
 ## Projektiryhmän jäsenet
 
