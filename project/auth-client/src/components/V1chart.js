@@ -93,7 +93,8 @@ export default function FirstView() {
                 backgroundColor: 'rgba(54, 162, 235, 1)',
               parsing: {xAxisKey: "Year",
                         yAxisKey: "Temperature"},
-              pointRadius: 1,
+                        pointRadius: 0.5,
+                        borderWidth: 1,
             },
             {
                 label: "Southern annual anomalies",
@@ -102,7 +103,8 @@ export default function FirstView() {
                 backgroundColor: "rgba(255, 99, 132, 0.5)",
                 parsing: {xAxisKey: "Year",
                           yAxisKey: "Temperature"},
-                pointRadius: 1,
+                          pointRadius: 0.5,
+                          borderWidth: 1,
               },
               {
                 label: "Global annual anomalies",
@@ -111,7 +113,8 @@ export default function FirstView() {
                 backgroundColor: "rgba(255, 99, 132, 0.5)",
                 parsing: {xAxisKey: "Year",
                           yAxisKey: "Temperature"},
-                pointRadius: 1,
+                          pointRadius: 0.5,
+                          borderWidth: 1,
               },
               
         ]
@@ -181,7 +184,8 @@ export default function FirstView() {
             backgroundColor: "rgba(255, 99, 132, 0.5)",
             parsing: {xAxisKey: "Year",
                       yAxisKey: "Temperature"},
-            pointRadius: 1,
+                      pointRadius: 0.5,
+                      borderWidth: 1,
           },
         ]
       }
