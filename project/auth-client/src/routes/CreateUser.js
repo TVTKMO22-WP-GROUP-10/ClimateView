@@ -3,7 +3,6 @@ import axios from 'axios'
 import Constants from '../Constants.json'
 import { useNavigate } from 'react-router-dom'
 
-//create a user and save to database, password is scrambled
 export default function CreateUserView() {
 
     const navigate = useNavigate();
@@ -16,15 +15,12 @@ export default function CreateUserView() {
         formData.append('uname', event.target.username.value);
         formData.append('pw', event.target.password.value);
         
-        // send post
         try {
             const result = await axios.post(Constants.API_ADDRESS + '/register', formData)
             setSignupProcessState("signupSuccess");
             setTimeout(() => {
             navigate('/login', {replace:true});
             }, 1500)
-
-           
 
         } catch (error) {
             console.error(error);

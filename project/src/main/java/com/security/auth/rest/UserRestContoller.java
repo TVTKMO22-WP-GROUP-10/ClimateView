@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.security.auth.data.User;
+import com.security.auth.data.Site_users;
 import com.security.auth.service.UserService;
 
 @CrossOrigin
@@ -21,7 +21,7 @@ public class UserRestContoller {
     UserService uService;
 
     @GetMapping("/users")
-    public List<User> getAllUsers(){
+    public List<Site_users> getAllUsers(){
         return uService.getUsers();
     }
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.security.auth.data.User;
+import com.security.auth.data.Site_users;
 
 
 @CrossOrigin
@@ -28,7 +28,7 @@ public class SecurityRestApi {
         @RequestParam String uname, 
         @RequestParam String pw)
         {
-            User u = secService.register(uname, pw);
+            Site_users u = secService.register(uname, pw);
 
             HttpHeaders headers =  new HttpHeaders();
             headers.setContentType(MediaType.TEXT_PLAIN);
