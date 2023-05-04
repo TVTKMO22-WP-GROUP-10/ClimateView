@@ -34,7 +34,7 @@ Kuva 4: Kaavio 1
 ![My Image](/project/auth-client/readme_images/visualization2_image.jpg)</br>
 Kuva 6: Kaavio 3 ja sen infopisteitä
 
-![My Image](/project/auth-client/readme_images/visualization1_image.jpg)</br>
+![My Image](/project/auth-client/readme_images/visualization3_image.jpg)</br>
 Kuva 7: Kaavio 4
 
 ## Sovelluksen käyttöönotto
